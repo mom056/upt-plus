@@ -54,7 +54,7 @@ export default function EcosystemSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 bg-grid-light">
+    <section className="py-14 sm:py-24 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 bg-grid-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
           <SectionMarker

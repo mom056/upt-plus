@@ -20,24 +20,24 @@ export default function HeroSection() {
   const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
 
   return (
-    <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 bg-[#080D1A] overflow-hidden text-slate-100 border-b border-white/10 bg-grid-architectural">
+    <section className="relative pt-24 pb-12 sm:pt-36 sm:pb-24 bg-[#080D1A] overflow-hidden text-slate-100 border-b border-white/10 bg-grid-architectural">
       {/* Restrained Architectural Gradient Accents */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-purple-950/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-orange-950/15 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Asymmetric 2-Column Hero Architecture */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Column (Approx 44% - lg:col-span-5) */}
           <div className="lg:col-span-5 flex flex-col items-start text-left rtl:text-right">
             <SectionMarker
               label={t.hero.badge}
               variant="orange"
-              className="mb-5"
+              className="mb-4 sm:mb-5"
             />
 
             {/* Signature Architectural Triad */}
-            <div className="font-['Space_Grotesk',sans-serif] font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white uppercase mb-4">
+            <div className="font-['Space_Grotesk',sans-serif] font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white uppercase mb-3 sm:mb-4">
               {language === 'ar' ? (
                 <>
                   <span className="block text-white">تأمين.</span>
@@ -62,12 +62,12 @@ export default function HeroSection() {
               {t.hero.subtitle}
             </p>
 
-            <p className="mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-lg">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-lg">
               {t.hero.description}
             </p>
 
             {/* Action CTAs */}
-            <div className="mt-7 flex flex-wrap items-center gap-3 w-full sm:w-auto">
+            <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3 w-full sm:w-auto">
               <Button href="/solutions" variant="primary" size="md" withArrow>
                 {t.nav.exploreCapabilities}
               </Button>
@@ -78,13 +78,13 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column (Approx 56% - lg:col-span-7) */}
-          <div className="lg:col-span-7 w-full">
+          <div className="lg:col-span-7 w-full mt-4 lg:mt-0">
             <HeroTopologyCanvas />
           </div>
         </div>
 
         {/* Sub-Hero Capability Architecture Rail - 3 Primary Pillars */}
-        <div className="mt-14 pt-6 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="mt-8 sm:mt-14 pt-6 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-3">
           {corePillars.map((pillar) => {
             const Icon = pillar.icon;
             return (

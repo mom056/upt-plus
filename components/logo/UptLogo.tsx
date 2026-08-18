@@ -55,7 +55,7 @@ export function UptWordmark({
 }) {
   const textStyles = {
     sm: {
-      title: 'text-xl tracking-wider',
+      title: 'text-[22px] sm:text-2xl tracking-wider',
       tagline: 'text-[10px] tracking-wide mt-0.5',
     },
     md: {
@@ -111,9 +111,9 @@ export default function UptLogo({
   className = '',
   href = '/',
 }: UptLogoProps) {
-  // Preset emblem sizes for each variant
+  // Preset emblem sizes for each variant (+12-15% for sm)
   const defaultEmblemSizes = {
-    sm: variant === 'vertical' ? 56 : 38,
+    sm: variant === 'vertical' ? 62 : 44,
     md: variant === 'vertical' ? 84 : 48,
     lg: variant === 'vertical' ? 112 : 62,
     xl: variant === 'vertical' ? 140 : 80,

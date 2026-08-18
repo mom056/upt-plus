@@ -52,7 +52,7 @@ export default function WhyUptSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#080D1A] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
+    <section className="py-14 sm:py-24 bg-[#080D1A] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           sectionNumber="04"
@@ -72,13 +72,13 @@ export default function WhyUptSection() {
         />
 
         {/* 4 Architectural Principles Grid with Dividers */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {differentiators.map((diff) => {
             const Icon = diff.icon;
             return (
               <div
                 key={diff.title}
-                className="bg-[#0D1326] rounded-md p-6 sm:p-8 border border-white/10 hover:border-orange-500/40 transition-all group"
+                className="bg-[#0D1326] rounded-md p-5 sm:p-8 border border-white/10 hover:border-orange-500/40 transition-all group"
               >
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="w-9 h-9 rounded bg-white/5 border border-white/10 flex items-center justify-center text-orange-400 group-hover:bg-orange-500/10 group-hover:border-orange-500/40 transition-colors">
