@@ -9,7 +9,7 @@ export default function FinalCtaSection() {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-24 sm:py-32 bg-[#080D1A] text-slate-100 relative overflow-hidden border-t border-white/10 bg-grid-architectural">
+    <section className="py-16 sm:py-28 bg-[#080D1A] text-slate-100 relative overflow-hidden border-t border-white/10 bg-grid-architectural">
       {/* Restrained Accent Lighting */}
       <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-950/20 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute -bottom-20 right-1/4 w-[400px] h-[200px] bg-orange-950/15 rounded-full blur-[90px] pointer-events-none" />

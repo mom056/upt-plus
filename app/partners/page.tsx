@@ -25,17 +25,15 @@ export default function EcosystemPage() {
       description:
         'Architected to deploy, secure, and operate across public cloud providers, private virtualization clusters, and container fabrics.',
       descriptionAr:
-        'مصممة للنشر والتأمين والتشغيل السلس عبر منصات السحابة العامة، عناقيد المحاكاة الافتراضية الخاصة، ونسيج الحاويات البرمجية.',
+        'مصممة للنشر والتأمين والتشغيل السلس عبر منصات السحابة العامة، عناقيد المحاكاة الافتراضية، ونسيج الحاويات.',
       capabilities: [
-        'Multi-cloud landing zones & VPC routing topology',
+        'Multi-cloud landing zones and VPC routing topologies',
         'Cross-region data replication and disaster recovery',
-        'Infrastructure as Code (IaC) modular templates',
         'Container cluster orchestration and health monitoring',
       ],
       capabilitiesAr: [
         'مناطق الهبوط السحابية المؤسسية وتوجيه شبكات VPC',
         'مزامنة البيانات عبر المناطق والتعافي من الكوارث',
-        'نماذج البنية التحتية المؤتمتة كرمز برمجي (IaC)',
         'إدارة عناقيد الحاويات ومراقبة مؤشرات الصحة التشغيلية',
       ],
       icon: Cloud,
@@ -45,19 +43,17 @@ export default function EcosystemPage() {
       title: 'Enterprise Security & Identity Fabrics',
       titleAr: 'نسيج الأمان المؤسسي وإدارة الهويات',
       description:
-        'Standardized integrations connecting modern Identity Providers (SAML/OIDC), hardware cryptographic modules, firewalls, and security telemetry platforms.',
+        'Standardized integrations connecting modern Identity Providers (SAML/OIDC), hardware security modules, and telemetry platforms.',
       descriptionAr:
-        'تكامل قياسي مع مزودي الهويات (SAML/OIDC)، وحدات التشفير العتادية، جدران الحماية، ومنصات إدارة وسجلات الأحداث الأمنية.',
+        'تكامل قياسي مع مزودي الهويات (SAML/OIDC)، وحدات التشفير العتادية، وجدران الحماية المؤسسية.',
       capabilities: [
         'SAML 2.0 / OIDC identity federation and MFA verification',
         'Cryptographic key and secrets lifecycle management',
-        'Dynamic microsegmentation policy enforcement',
         'Centralized security logging and telemetry ingestion',
       ],
       capabilitiesAr: [
         'التحقق الموحد من الهويات (SAML/OIDC) والمصادقة متعددة العوامل',
         'إدارة دورة حياة مفاتيح التشفير والأسرار البرمجية',
-        'تطبيق سياسات العزل الشبكي الدقيق المعرفة برمجياً',
         'تجميع وسجلات المراقبة الأمنية والتحليل الاستباقي',
       ],
       icon: ShieldCheck,
@@ -67,19 +63,17 @@ export default function EcosystemPage() {
       title: 'Core Optical & Enterprise Networking',
       titleAr: 'الشبكات الأساسية ومحولات البيانات',
       description:
-        'Interoperable with industry-standard spine-leaf switching topologies, software-defined WAN fabrics, and certified optical backbones.',
+        'Interoperable with industry-standard spine-leaf switching topologies, SD-WAN fabrics, and certified optical backbones.',
       descriptionAr:
-        'توافق تشغيلي مع معمارية محولات Spine-Leaf القياسية، شبكات SD-WAN، وتمديدات كوابل الألياف الضوئية المعتمدة.',
+        'توافق تشغيلي مع معمارية محولات Spine-Leaf، شبكات SD-WAN، وتمديدات الألياف الضوئية المعتمدة.',
       capabilities: [
         'Non-blocking overlay routing and VLAN segmentation',
         'Resilient carrier routing and redundant uplink pathways',
-        'High-density single-mode/multi-mode fiber distribution',
         'Continuous network flow telemetry and link auditing',
       ],
       capabilitiesAr: [
         'توجيه المسارات غير الحاجبة وعزل الشبكات الافتراضية',
         'مسارات اتصال شبكية متكررة تضمن عدم انقطاع الخدمة',
-        'توزيع كوابل الألياف الضوئية عالية الكثافة والاعتمادية',
         'مراقبة حركة تدفق البيانات وفحص سلامة الخطوط باستمرار',
       ],
       icon: Network,
@@ -91,17 +85,15 @@ export default function EcosystemPage() {
       description:
         'Connecting enterprise systems of record, transactional ERP platforms, and industry databases via high-throughput API gateways.',
       descriptionAr:
-        'ربط الأنظمة المؤسسية الأساسية، منصات تخطيط الموارد (ERP)، وقواعد البيانات التخصصية عبر بوابات واجهات برمجة فائقة السرعة.',
+        'ربط الأنظمة المؤسسية الأساسية ومنصات ERP وقواعد البيانات عبر بوابات واجهات برمجة فائقة السرعة.',
       capabilities: [
         'API Gateway rate-limiting and schema verification',
         'Event-driven asynchronous message queuing',
-        'Data replication and structured ETL streaming',
         'Transactional consistency across distributed services',
       ],
       capabilitiesAr: [
         'بوابات واجهات البرمجة مع ضبط معدلات الطلب والتحقق',
         'ناقل الرسائل والأحداث غير المتزامن لضمان تدفق العمليات',
-        'مزامنة البيانات وبث العمليات بصورة منظمة',
         'الحفاظ على تكامل المعاملات عبر الخدمات الموزعة',
       ],
       icon: Cpu,

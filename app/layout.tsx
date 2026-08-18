@@ -3,7 +3,6 @@ import './globals.css';
 import { LanguageProvider } from '@/lib/i18n';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import CookieBanner from '@/components/ui/CookieBanner';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://upt-plus.com'),
@@ -78,7 +77,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <div className="flex-1">{children}</div>
             <Footer />
-            <CookieBanner />
           </div>
         </LanguageProvider>
       </body>
