@@ -1,0 +1,6 @@
+{
+  "name": "UPT PLUS — Cybersecurity & Cloud Computing",
+  "description": "Enterprise corporate platform for UPT Plus, specializing in cybersecurity, cloud computing, digital infrastructure, application modernization, and managed technology services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
