@@ -12,11 +12,9 @@ export default function HeroSection() {
   const { language, t, isRTL } = useLanguage();
 
   const corePillars = [
-    { name: 'Cybersecurity', nameAr: 'الأمن السيبراني', href: '/solutions/cybersecurity', icon: ShieldAlert },
-    { name: 'Cloud Computing', nameAr: 'الحوسبة السحابية', href: '/solutions/cloud', icon: CloudCog },
-    { name: 'Digital Infrastructure', nameAr: 'البنية التحتية الرقمية', href: '/solutions/infrastructure', icon: Server },
-    { name: 'Application Modernization', nameAr: 'تحديث التطبيقات', href: '/solutions/applications', icon: Code2 },
-    { name: 'Managed Services', nameAr: 'الخدمات المدارة', href: '/managed-services', icon: ShieldCheck },
+    { name: 'Cybersecurity', nameAr: 'الأمن السيبراني', href: '/solutions#cybersecurity', icon: ShieldAlert },
+    { name: 'Cloud Computing', nameAr: 'الحوسبة السحابية', href: '/solutions#cloud', icon: CloudCog },
+    { name: 'Digital Infrastructure', nameAr: 'البنية التحتية الرقمية', href: '/solutions#infrastructure', icon: Server },
   ];
 
   const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
@@ -85,25 +83,25 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Sub-Hero Capability Architecture Rail */}
-        <div className="mt-14 pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-5 gap-3">
-          {corePillars.map((pillar, idx) => {
+        {/* Sub-Hero Capability Architecture Rail - 3 Primary Pillars */}
+        <div className="mt-14 pt-6 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-3">
+          {corePillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
               <Link
                 key={pillar.name}
                 href={pillar.href}
-                className="flex items-center justify-between p-2.5 sm:p-3 rounded-md bg-[#0D1326] border border-white/10 hover:border-orange-500/50 hover:bg-[#11182B] transition-all group"
+                className="flex items-center justify-between p-3 rounded-md bg-[#0D1326] border border-white/10 hover:border-orange-500/50 hover:bg-[#11182B] transition-all group"
               >
-                <div className="flex items-center gap-2 truncate">
-                  <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center text-orange-400 group-hover:bg-orange-500/20 transition-colors shrink-0">
-                    <Icon className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-2.5 truncate">
+                  <div className="w-7 h-7 rounded bg-white/5 flex items-center justify-center text-orange-400 group-hover:bg-orange-500/20 transition-colors shrink-0">
+                    <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[11px] sm:text-xs font-semibold text-slate-300 group-hover:text-white transition-colors truncate">
+                  <span className="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors truncate">
                     {language === 'ar' ? pillar.nameAr : pillar.name}
                   </span>
                 </div>
-                <ArrowIcon className="w-3.5 h-3.5 text-slate-500 group-hover:text-orange-400 shrink-0 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+                <ArrowIcon className="w-4 h-4 text-slate-500 group-hover:text-orange-400 shrink-0 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
               </Link>
             );
           })}

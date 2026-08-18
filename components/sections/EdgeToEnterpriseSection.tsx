@@ -12,7 +12,7 @@ export default function EdgeToEnterpriseSection() {
     <section className="py-20 sm:py-28 bg-[#050811] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          sectionNumber="02"
+          sectionNumber="03"
           eyebrow={language === 'ar' ? 'التكامل المعماري المترابط' : 'ARCHITECTURAL INTEGRATION'}
           title={
             language === 'ar'

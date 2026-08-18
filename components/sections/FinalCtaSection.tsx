@@ -36,16 +36,16 @@ export default function FinalCtaSection() {
           <Button href="/contact" variant="primary" size="md" withArrow>
             {t.nav.talkToExpert}
           </Button>
-          <Button href="/capabilities" variant="secondary" size="md">
-            {language === 'ar' ? 'استعراض بيان القدرات المؤسسية' : 'Enterprise Capability Statement'}
+          <Button href="/solutions" variant="secondary" size="md">
+            {language === 'ar' ? 'استعراض الحلول التقنية' : 'Explore Solutions'}
           </Button>
         </div>
 
         {/* Engagement Model Assurance Note */}
         <div className="mt-10 text-[11px] font-mono text-slate-500 uppercase tracking-wider">
           {language === 'ar'
-            ? 'جلسات استشارية معمارية • اتفاقيات سرية معلومات (NDA) • توافق مع المعايير التنظيمية'
-            : 'CONFIDENTIAL ARCHITECTURAL DISCOVERY • NDA-PROTECTED SESSIONS • GOVERNED EXECUTION'}
+            ? 'جلسات استشارية معمارية • انضباط هندسي • توافق مع المعايير المؤسسية'
+            : 'ARCHITECTURAL CONSULTATION • ENGINEERING RIGOR • GOVERNED EXECUTION'}
         </div>
       </div>
     </section>

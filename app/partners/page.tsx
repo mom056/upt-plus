@@ -1,136 +1,175 @@
+'use client';
+
 import React from 'react';
-import { Metadata } from 'next';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import Badge from '@/components/ui/Badge';
+import SectionMarker from '@/components/ui/SectionMarker';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/lib/i18n';
 import {
   Cpu,
   ShieldCheck,
   Network,
   Cloud,
-  Layers,
   CheckCircle2,
-  Lock,
-  GitBranch,
+  Layers,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Technology Ecosystem & Integration Philosophy | Vendor Neutrality',
-  description:
-    'UPT Plus engineers seamless integrations across public clouds, private virtualization, core enterprise networking, Zero Trust identity, and mission-critical ERP backbones.',
-};
+export default function EcosystemPage() {
+  const { language } = useLanguage();
 
-export default function PartnersPage() {
   const ecosystemTiers = [
     {
-      title: 'Hyperscale Cloud & Container Fabrics',
+      num: '01',
+      title: 'Cloud & Virtualization Platforms',
+      titleAr: 'منصات الحوسبة والبيئات السحابية',
       description:
-        'Architected to deploy, secure, and operate seamlessly across AWS, Microsoft Azure, Google Cloud Platform, and on-premises Kubernetes/OpenShift distributions.',
+        'Architected to deploy, secure, and operate across public cloud providers, private virtualization clusters, and container fabrics.',
+      descriptionAr:
+        'مصممة للنشر والتأمين والتشغيل السلس عبر منصات السحابة العامة، عناقيد المحاكاة الافتراضية الخاصة، ونسيج الحاويات البرمجية.',
       capabilities: [
-        'Multi-cloud landing zones and VPC peering',
-        'Cross-cloud replication and disaster recovery',
-        'Terraform / OpenTofu Infrastructure as Code modules',
-        'FinOps rightsizing and reserved instance governance',
+        'Multi-cloud landing zones & VPC routing topology',
+        'Cross-region data replication and disaster recovery',
+        'Infrastructure as Code (IaC) modular templates',
+        'Container cluster orchestration and health monitoring',
+      ],
+      capabilitiesAr: [
+        'مناطق الهبوط السحابية المؤسسية وتوجيه شبكات VPC',
+        'مزامنة البيانات عبر المناطق والتعافي من الكوارث',
+        'نماذج البنية التحتية المؤتمتة كرمز برمجي (IaC)',
+        'إدارة عناقيد الحاويات ومراقبة مؤشرات الصحة التشغيلية',
       ],
       icon: Cloud,
     },
     {
-      title: 'Enterprise Security & Zero Trust Identity',
+      num: '02',
+      title: 'Enterprise Security & Identity Fabrics',
+      titleAr: 'نسيج الأمان المؤسسي وإدارة الهويات',
       description:
-        'Standardized integrations connecting leading enterprise Identity Providers (Entra ID, Okta, Ping), Next-Gen Firewalls (Palo Alto, Fortinet), and SIEM/SOAR platforms.',
+        'Standardized integrations connecting modern Identity Providers (SAML/OIDC), hardware cryptographic modules, firewalls, and security telemetry platforms.',
+      descriptionAr:
+        'تكامل قياسي مع مزودي الهويات (SAML/OIDC)، وحدات التشفير العتادية، جدران الحماية، ومنصات إدارة وسجلات الأحداث الأمنية.',
       capabilities: [
-        'SAML 2.0 / OIDC federation & mTLS authorization',
-        'Hardware Security Module (HSM) key management',
-        'Distributed microsegmentation policies',
-        'Automated vulnerability & compliance feeds',
+        'SAML 2.0 / OIDC identity federation and MFA verification',
+        'Cryptographic key and secrets lifecycle management',
+        'Dynamic microsegmentation policy enforcement',
+        'Centralized security logging and telemetry ingestion',
+      ],
+      capabilitiesAr: [
+        'التحقق الموحد من الهويات (SAML/OIDC) والمصادقة متعددة العوامل',
+        'إدارة دورة حياة مفاتيح التشفير والأسرار البرمجية',
+        'تطبيق سياسات العزل الشبكي الدقيق المعرفة برمجياً',
+        'تجميع وسجلات المراقبة الأمنية والتحليل الاستباقي',
       ],
       icon: ShieldCheck,
     },
     {
-      title: 'Optical Backbones & Datacenter Switching',
+      num: '03',
+      title: 'Core Optical & Enterprise Networking',
+      titleAr: 'الشبكات الأساسية ومحولات البيانات',
       description:
-        'Interoperable with industry-leading spine-leaf switching hardware, software-defined WAN controllers, and optical transmission platforms.',
+        'Interoperable with industry-standard spine-leaf switching topologies, software-defined WAN fabrics, and certified optical backbones.',
+      descriptionAr:
+        'توافق تشغيلي مع معمارية محولات Spine-Leaf القياسية، شبكات SD-WAN، وتمديدات كوابل الألياف الضوئية المعتمدة.',
       capabilities: [
-        'EVPN-VXLAN non-blocking overlay routing',
-        'Carrier BGP multi-homing and Anycast DNS',
-        'High-density fiber optic backbone distribution',
-        'SNMP/gNMI telemetry and automated flow analysis',
+        'Non-blocking overlay routing and VLAN segmentation',
+        'Resilient carrier routing and redundant uplink pathways',
+        'High-density single-mode/multi-mode fiber distribution',
+        'Continuous network flow telemetry and link auditing',
+      ],
+      capabilitiesAr: [
+        'توجيه المسارات غير الحاجبة وعزل الشبكات الافتراضية',
+        'مسارات اتصال شبكية متكررة تضمن عدم انقطاع الخدمة',
+        'توزيع كوابل الألياف الضوئية عالية الكثافة والاعتمادية',
+        'مراقبة حركة تدفق البيانات وفحص سلامة الخطوط باستمرار',
       ],
       icon: Network,
     },
     {
-      title: 'Enterprise ERP & Core Systems of Record',
+      num: '04',
+      title: 'Enterprise Applications & Core Backbones',
+      titleAr: 'الأنظمة والتطبيقات المؤسسية الأساسية',
       description:
-        'Connecting legacy databases (Oracle, IBM DB2, Mainframe) and Tier-1 ERPs (SAP S/4HANA) to modern cloud-native frontends and microservices.',
+        'Connecting enterprise systems of record, transactional ERP platforms, and industry databases via high-throughput API gateways.',
+      descriptionAr:
+        'ربط الأنظمة المؤسسية الأساسية، منصات تخطيط الموارد (ERP)، وقواعد البيانات التخصصية عبر بوابات واجهات برمجة فائقة السرعة.',
       capabilities: [
-        'Event-driven Kafka message routing',
-        'API Gateway rate-limiting & schema governance',
-        'Change Data Capture (CDC) streaming backplanes',
-        'Transactional integrity with zero data drift',
+        'API Gateway rate-limiting and schema verification',
+        'Event-driven asynchronous message queuing',
+        'Data replication and structured ETL streaming',
+        'Transactional consistency across distributed services',
+      ],
+      capabilitiesAr: [
+        'بوابات واجهات البرمجة مع ضبط معدلات الطلب والتحقق',
+        'ناقل الرسائل والأحداث غير المتزامن لضمان تدفق العمليات',
+        'مزامنة البيانات وبث العمليات بصورة منظمة',
+        'الحفاظ على تكامل المعاملات عبر الخدمات الموزعة',
       ],
       icon: Cpu,
     },
   ];
 
   return (
-    <main className="min-h-screen bg-[#080D1A] text-slate-100 pt-28 pb-24">
+    <main className="min-h-screen bg-[#080D1A] text-slate-100 pt-28 pb-24 bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: 'Technology Ecosystem' }]} />
+        <Breadcrumbs items={[{ label: language === 'ar' ? 'المنظومة التقنية' : 'Technology Ecosystem' }]} />
 
         {/* Hero Header */}
         <div className="max-w-4xl mt-6 mb-16">
-          <Badge variant="purple" className="mb-4">
-            INTEGRATION ARCHITECTURE
-          </Badge>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white font-['Space_Grotesk',sans-serif] leading-[1.08]">
-            Built to integrate across modern enterprise environments.
+          <SectionMarker
+            number="01"
+            label={language === 'ar' ? 'المنظومة والتكامل التقني' : 'TECHNOLOGY ECOSYSTEM'}
+            variant="purple"
+            className="mb-4"
+          />
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-['Space_Grotesk',sans-serif] leading-[1.08]">
+            {language === 'ar'
+              ? 'مصممة للتكامل مع أرقى بيئات التقنية المؤسسية.'
+              : 'Built to integrate across modern enterprise environments.'}
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
-            UPT Plus adheres to a rigorous, vendor-neutral engineering philosophy. We evaluate, integrate, and orchestrate technology solely based on technical fit, security posture, and long-term operational resilience for our clients.
+          <p className="mt-5 text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
+            {language === 'ar'
+              ? 'تعتمد UPT PLUS نهجاً هندسياً محايداً ومتقدماً يضمن انسجام الأنظمة الأمنية، السحابية، والفيزيائية مع المنظومات والمنصات العالمية الرائدة وفق متطلبات العميل المعمارية.'
+              : 'UPT PLUS adheres to an architecture-first, vendor-neutral engineering methodology. We evaluate and orchestrate technology based on technical fit, security posture, and long-term operational resilience.'}
           </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/contact" variant="primary" size="lg" withArrow>
-              Discuss Technical Integration Requirements
-            </Button>
-            <Button href="/capabilities" variant="secondary" size="lg">
-              Enterprise Capability Statement
-            </Button>
-          </div>
         </div>
 
-        {/* Integration Domains */}
-        <div className="space-y-8 mb-20">
+        {/* 4 Integration Categories */}
+        <div className="space-y-8 mb-16">
           <div className="text-xs font-mono uppercase text-orange-400 font-bold tracking-widest">
-            ENTERPRISE INTEGRATION CATEGORIES
+            {language === 'ar' ? 'طبقات التكامل المعماري' : 'ARCHITECTURAL INTEGRATION TIERS'}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {ecosystemTiers.map((tier) => {
               const Icon = tier.icon;
               return (
                 <div
-                  key={tier.title}
-                  className="p-8 rounded-2xl bg-[#0C1222] border border-white/15 shadow-xl flex flex-col justify-between"
+                  key={tier.num}
+                  className="p-6 sm:p-8 rounded-md bg-[#0D1326] border border-white/15 shadow-xl flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
-                      <Icon className="w-6 h-6" />
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-9 h-9 rounded bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className="font-mono text-xs font-bold text-slate-500">
+                        TIER {tier.num}
+                      </span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-white mb-3 font-['Space_Grotesk',sans-serif]">
-                      {tier.title}
+                    <h2 className="text-xl font-bold text-white mb-2.5 font-['Space_Grotesk',sans-serif]">
+                      {language === 'ar' ? tier.titleAr : tier.title}
                     </h2>
 
-                    <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                      {tier.description}
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
+                      {language === 'ar' ? tier.descriptionAr : tier.description}
                     </p>
 
-                    <div className="space-y-2 pt-4 border-t border-white/10">
+                    <div className="space-y-2 pt-3.5 border-t border-white/10">
                       <div className="text-xs font-mono uppercase text-slate-400 font-bold mb-2">
-                        Integration Capabilities:
+                        {language === 'ar' ? 'قدرات التكامل الفني:' : 'Integration Scope:'}
                       </div>
-                      {tier.capabilities.map((cap, cIdx) => (
+                      {(language === 'ar' ? tier.capabilitiesAr : tier.capabilities).map((cap, cIdx) => (
                         <div key={cIdx} className="flex items-start gap-2 text-xs text-slate-300">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                           <span>{cap}</span>
@@ -144,22 +183,30 @@ export default function PartnersPage() {
           </div>
         </div>
 
-        {/* Integration Policy Governance Box */}
-        <div className="bg-[#11182B] border border-white/15 rounded-2xl p-8 sm:p-12 text-center max-w-4xl mx-auto">
-          <Badge variant="orange" className="mb-4">
-            GOVERNANCE &amp; NEUTRALITY
-          </Badge>
-          <h3 className="text-2xl sm:text-3xl font-bold text-white font-['Space_Grotesk',sans-serif] mb-4">
-            Our Architectural Neutrality Commitment
+        {/* Neutrality & Governance Philosophy */}
+        <div className="bg-[#0D1326] border border-white/15 rounded-md p-8 sm:p-12 text-center max-w-4xl mx-auto">
+          <SectionMarker
+            number="02"
+            label={language === 'ar' ? 'الحيادية الهندسية' : 'VENDOR NEUTRALITY'}
+            variant="orange"
+            className="mb-4"
+          />
+          <h3 className="text-2xl sm:text-3xl font-bold text-white font-['Space_Grotesk',sans-serif] mb-3">
+            {language === 'ar'
+              ? 'التزامنا بالحيادية والنزاهة المعمارية'
+              : 'Our Architectural Neutrality Commitment'}
           </h3>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
-            We do not sell proprietary vendor hardware quotas. We select, configure, and maintain the exact combination of technologies that maximizes your system uptime, performance benchmarks, and compliance governance.
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto mb-6">
+            {language === 'ar'
+              ? 'نختار ونهندس الحلول بناءً على أفضل ملاءمة تشغيلية، أمان، واستدامة لبنية العميل، دون التقيد بحصص تجارية أو مبيعات محددة.'
+              : 'We evaluate, configure, and maintain the exact combination of technologies that maximizes your uptime, security posture, and operational sovereignty.'}
           </p>
-          <Button href="/contact" variant="primary" size="lg" withArrow>
-            Consult With Our Solutions Architects
+          <Button href="/contact" variant="primary" size="md" withArrow>
+            {language === 'ar' ? 'استشر فريقنا التقني' : 'Consult Our Solutions Architects'}
           </Button>
         </div>
       </div>
     </main>
   );
 }
+

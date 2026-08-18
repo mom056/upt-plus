@@ -58,7 +58,7 @@ export default function EcosystemSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
           <SectionMarker
-            number="07"
+            number="05"
             label={language === 'ar' ? 'المنظومة والتكامل التقني' : 'TECHNOLOGY ECOSYSTEM'}
             variant="purple"
             isLightSection={true}

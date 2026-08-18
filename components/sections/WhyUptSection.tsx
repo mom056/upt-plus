@@ -55,7 +55,7 @@ export default function WhyUptSection() {
     <section className="py-20 sm:py-28 bg-[#080D1A] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          sectionNumber="08"
+          sectionNumber="04"
           eyebrow={language === 'ar' ? 'فلسفة التميز الهندسي' : 'WHY UPT PLUS'}
           title={
             language === 'ar'
