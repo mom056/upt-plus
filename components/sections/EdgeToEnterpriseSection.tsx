@@ -9,9 +9,10 @@ export default function EdgeToEnterpriseSection() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-20 sm:py-28 bg-[#050811] text-slate-100 border-b border-white/10 relative">
+    <section className="py-20 sm:py-28 bg-[#050811] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          sectionNumber="02"
           eyebrow={language === 'ar' ? 'التكامل المعماري المترابط' : 'ARCHITECTURAL INTEGRATION'}
           title={
             language === 'ar'
@@ -23,6 +24,7 @@ export default function EdgeToEnterpriseSection() {
               ? 'تعتبر UPT PLUS طبقة التكامل والأمان والتشغيل المستمر عبر كافة مفاصل البيئة الرقمية الحديثة.'
               : 'UPT PLUS serves as the strategic integration, security, and operational engineering layer bridging distributed endpoints to core enterprise systems.'
           }
+          align="split"
           badgeVariant="purple"
         />
 
@@ -31,3 +33,4 @@ export default function EdgeToEnterpriseSection() {
     </section>
   );
 }
+

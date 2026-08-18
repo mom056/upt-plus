@@ -1,19 +1,21 @@
 'use client';
 
 import React from 'react';
-import Badge from './Badge';
+import SectionMarker from './SectionMarker';
 
 interface SectionHeaderProps {
+  sectionNumber?: string;
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  align?: 'left' | 'center';
+  align?: 'left' | 'center' | 'split';
   isLightSection?: boolean;
-  badgeVariant?: 'orange' | 'purple' | 'neutral' | 'emerald';
+  badgeVariant?: 'orange' | 'purple' | 'navy' | 'emerald';
   className?: string;
 }
 
 export default function SectionHeader({
+  sectionNumber,
   eyebrow,
   title,
   subtitle,
@@ -22,20 +24,54 @@ export default function SectionHeader({
   badgeVariant = 'orange',
   className = '',
 }: SectionHeaderProps) {
-  const alignClass = align === 'center' ? 'text-center mx-auto items-center' : 'text-left rtl:text-right';
-  const titleColor = isLightSection ? 'text-[#0D1326]' : 'text-slate-100';
+  const titleColor = isLightSection ? 'text-[#0D1326]' : 'text-white';
   const subtitleColor = isLightSection ? 'text-slate-600' : 'text-slate-400';
+
+  if (align === 'split') {
+    return (
+      <div className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 border-b pb-8 ${isLightSection ? 'border-slate-200' : 'border-white/10'} ${className}`}>
+        <div className="max-w-2xl">
+          {eyebrow && (
+            <div className="mb-3">
+              <SectionMarker
+                number={sectionNumber}
+                label={eyebrow}
+                variant={badgeVariant}
+                isLightSection={isLightSection}
+              />
+            </div>
+          )}
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12] font-['Space_Grotesk',sans-serif] ${titleColor}`}>
+            {title}
+          </h2>
+        </div>
+
+        {subtitle && (
+          <p className={`text-sm sm:text-base leading-relaxed max-w-md ${subtitleColor}`}>
+            {subtitle}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  const alignClass = align === 'center' ? 'text-center mx-auto items-center' : 'text-left rtl:text-right';
 
   return (
     <div className={`flex flex-col ${alignClass} max-w-3xl mb-12 sm:mb-16 ${className}`}>
       {eyebrow && (
-        <div className="mb-4">
-          <Badge variant={badgeVariant}>{eyebrow}</Badge>
+        <div className="mb-3">
+          <SectionMarker
+            number={sectionNumber}
+            label={eyebrow}
+            variant={badgeVariant}
+            isLightSection={isLightSection}
+          />
         </div>
       )}
 
       <h2
-        className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] font-['Space_Grotesk',sans-serif] ${titleColor}`}
+        className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12] font-['Space_Grotesk',sans-serif] ${titleColor}`}
       >
         {title}
       </h2>
@@ -48,3 +84,4 @@ export default function SectionHeader({
     </div>
   );
 }
+

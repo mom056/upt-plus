@@ -64,15 +64,15 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#080D1A]/95 backdrop-blur-md border-b border-white/10 shadow-lg py-3.5'
-          : 'bg-transparent border-b border-white/5 py-5'
+          ? 'bg-[#080D1A]/95 backdrop-blur-md border-b border-white/10 shadow-md py-3'
+          : 'bg-transparent border-b border-white/5 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo - Restrained & Crisp */}
           <div className="shrink-0 flex items-center">
-            <UptLogo variant="horizontal" size="md" withTagline={true} />
+            <UptLogo variant="horizontal" size="sm" withTagline={false} />
           </div>
 
           {/* Desktop Navigation Links */}

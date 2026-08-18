@@ -14,7 +14,7 @@ import {
   Factory,
   ArrowRight,
   ArrowLeft,
-  CheckCircle,
+  CheckCircle2,
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
@@ -37,9 +37,10 @@ export default function IndustriesPreviewSection() {
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200">
+    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 bg-grid-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
+          sectionNumber="05"
           eyebrow={language === 'ar' ? 'القطاعات التخصصية' : 'INDUSTRY EXPERTISE'}
           title={
             language === 'ar'
@@ -51,12 +52,13 @@ export default function IndustriesPreviewSection() {
               ? 'تتطلب القطاعات الحيوية معايير دقيقة للتوافر، الأمان، والامتثال التنظيمي. نهندس الحلول وفق المخاطر المحددة لكل مجال.'
               : 'Mission-critical industries require sector-specific engineering. We design systems addressing distinct regulatory, availability, and threat profiles.'
           }
+          align="split"
           badgeVariant="purple"
           isLightSection={true}
         />
 
-        {/* Industry Selector Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-8">
+        {/* Industry Selector Rail */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-7">
           {industriesList.map((ind) => {
             const isSelected = selectedIndustry === ind.id;
             const Icon = iconMap[ind.id] || Landmark;
@@ -66,18 +68,18 @@ export default function IndustriesPreviewSection() {
                 key={ind.id}
                 type="button"
                 onClick={() => setSelectedIndustry(ind.id)}
-                className={`p-3.5 rounded-xl border text-center transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+                className={`p-3 rounded-md border text-center transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
                   isSelected
                     ? 'bg-white border-orange-500 shadow-md text-[#0D1326]'
-                    : 'bg-white/60 border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-white'
+                    : 'bg-white/80 border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-white'
                 }`}
               >
                 <div
-                  className={`w-8 h-8 rounded-lg mx-auto flex items-center justify-center mb-2 transition-colors ${
+                  className={`w-7 h-7 rounded mx-auto flex items-center justify-center mb-1.5 transition-colors ${
                     isSelected ? 'bg-orange-500/10 text-orange-600' : 'bg-slate-100 text-slate-500'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-xs font-bold truncate">
                   {language === 'ar' ? ind.nameAr : ind.name}
@@ -87,9 +89,9 @@ export default function IndustriesPreviewSection() {
           })}
         </div>
 
-        {/* Active Industry Deep-Dive Card */}
-        <div className="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+        {/* Active Industry Deep-Dive Panel */}
+        <div className="bg-white rounded-md p-6 sm:p-9 border border-slate-200 shadow-sm">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-6 border-b border-slate-100">
             <div>
               <span className="text-xs font-mono font-bold text-orange-600 uppercase tracking-wider">
                 {language === 'ar' ? activeIndustry.taglineAr : activeIndustry.tagline}
@@ -110,7 +112,7 @@ export default function IndustriesPreviewSection() {
             </Button>
           </div>
 
-          <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed max-w-4xl">
             {language === 'ar' ? activeIndustry.heroSummaryAr : activeIndustry.heroSummary}
           </p>
 
@@ -123,7 +125,7 @@ export default function IndustriesPreviewSection() {
               </div>
               <div className="space-y-3">
                 {activeIndustry.challenges.map((c, cIdx) => (
-                  <div key={cIdx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-200/70">
+                  <div key={cIdx} className="p-3.5 rounded bg-slate-50 border border-slate-200/70">
                     <h4 className="text-xs font-bold text-slate-900 mb-1">
                       {language === 'ar' ? c.titleAr : c.title}
                     </h4>
@@ -142,7 +144,7 @@ export default function IndustriesPreviewSection() {
               </div>
               <div className="space-y-3">
                 {activeIndustry.solutions.map((s, sIdx) => (
-                  <div key={sIdx} className="p-3.5 rounded-lg bg-orange-50/50 border border-orange-200/60">
+                  <div key={sIdx} className="p-3.5 rounded bg-orange-50/40 border border-orange-200/60">
                     <h4 className="text-xs font-bold text-orange-950 mb-1">
                       {language === 'ar' ? s.titleAr : s.title}
                     </h4>
@@ -159,3 +161,4 @@ export default function IndustriesPreviewSection() {
     </section>
   );
 }
+

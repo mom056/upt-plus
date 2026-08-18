@@ -38,13 +38,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#050811] text-slate-400 border-t border-white/10 pt-16 pb-12">
+    <footer className="bg-[#080D1A] text-slate-400 border-t border-white/10 pt-16 pb-12 bg-grid-architectural">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand & Overview Column */}
           <div className="lg:col-span-2 space-y-4">
-            <UptLogo variant="horizontal" size="lg" withTagline={true} />
+            <UptLogo variant="horizontal" size="md" withTagline={true} />
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm pt-2">
               {language === 'ar'
                 ? 'مؤسسة رائدة في هندسة الأمن السيبراني، الحوسبة السحابية، البنية التحتية الرقمية، وتحديث التطبيقات للمؤسسات الحيوية والقطاعات الكبرى.'

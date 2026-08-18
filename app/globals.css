@@ -1,10 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --font-space-grotesk: 'Space Grotesk', sans-serif;
-    --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+    --font-space-grotesk: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-jakarta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* UPT Control Plane Semantic Surfaces */
+    --surface-navy: #080D1A;
+    --surface-panel: #0D1326;
+    --surface-elevated: #11182B;
+    --surface-light: #F7F8FA;
+
+    /* Semantic Borders */
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --border-security: rgba(107, 33, 168, 0.45);
+    --border-active: rgba(255, 122, 0, 0.55);
+
+    /* Controlled Radius Scale */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
   }
 }
+
+/* Subtle Architectural Grid Texture (Restrained & High-Performance) */
+.bg-grid-architectural {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-grid-light {
+  background-image: 
+    linear-gradient(to right, rgba(13, 19, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 19, 38, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -210,22 +210,22 @@ export default function EdgeToEnterpriseDiagram() {
 
   return (
     <div className="w-full">
-      {/* Visual Workflow Map (Desktop Horizontal, Tablet/Mobile Wrap) */}
-      <div className="relative bg-[#080D1A] border border-white/10 rounded-2xl p-4 sm:p-6 lg:p-8 overflow-hidden shadow-2xl">
+      {/* Visual Workflow Map */}
+      <div className="relative bg-[#080D1A] border border-white/15 rounded-lg p-4 sm:p-6 lg:p-7 overflow-hidden shadow-2xl">
         {/* Subtle Background Glow */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-900/15 rounded-full blur-3xl pointer-events-none" />
 
         {/* Integration Layer Banner */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
           <div>
             <div className="text-[11px] font-mono tracking-widest uppercase text-orange-400 font-bold">
               {language === 'ar' ? 'نموذج التدفق المعماري الشامل' : 'END-TO-END ARCHITECTURAL FLOW'}
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mt-0.5">
               {language === 'ar' ? 'من الحافة إلى البنية المؤسسية' : 'From Edge to Enterprise'}
             </h3>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#11182B] border border-white/10 text-xs text-slate-300">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-[#11182B] border border-white/10 text-xs text-slate-300">
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span className="font-mono text-[11px]">
               {language === 'ar' ? 'طبقة UPT PLUS التكاملية والتشغيلية' : 'UPT PLUS Integration & Operations Fabric'}
@@ -234,7 +234,7 @@ export default function EdgeToEnterpriseDiagram() {
         </div>
 
         {/* Flow Stage Node Track */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-3 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 relative z-10">
           {stages.map((stage, idx) => {
             const isSelected = selectedStageIndex === idx;
             const Icon = stage.icon;
@@ -244,14 +244,14 @@ export default function EdgeToEnterpriseDiagram() {
                 key={stage.id}
                 type="button"
                 onClick={() => setSelectedStageIndex(idx)}
-                className={`relative flex flex-col p-4 rounded-xl border text-left rtl:text-right transition-all duration-300 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+                className={`relative flex flex-col p-3.5 rounded-md border text-left rtl:text-right transition-all duration-200 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
                   isSelected
-                    ? 'bg-[#151D32] border-orange-500 shadow-lg scale-[1.02]'
-                    : 'bg-[#0E1527] border-white/10 hover:border-purple-400/50 hover:bg-[#11182B]'
+                    ? 'bg-[#151D32] border-orange-500 shadow-md scale-[1.01]'
+                    : 'bg-[#0D1326] border-white/10 hover:border-purple-400/50 hover:bg-[#11182B]'
                 }`}
               >
                 {/* Stage Step Number & Connector Arrow */}
-                <div className="flex items-center justify-between w-full mb-3">
+                <div className="flex items-center justify-between w-full mb-2.5">
                   <span
                     className={`font-mono text-xs font-bold ${
                       isSelected ? 'text-orange-400' : 'text-slate-500 group-hover:text-purple-400'
@@ -261,29 +261,29 @@ export default function EdgeToEnterpriseDiagram() {
                   </span>
 
                   <div
-                    className={`w-7 h-7 rounded-md flex items-center justify-center transition-colors ${
+                    className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
                       isSelected
                         ? 'bg-orange-500/20 text-orange-400'
                         : 'bg-white/5 text-slate-400 group-hover:text-white'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5" />
                   </div>
                 </div>
 
-                <div className="text-xs font-bold text-white mb-1 group-hover:text-orange-300 transition-colors">
+                <div className="text-xs font-bold text-white mb-1 group-hover:text-orange-300 transition-colors truncate">
                   {language === 'ar' ? stage.titleAr : stage.title}
                 </div>
 
-                <div className="text-[11px] text-slate-400 leading-snug line-clamp-2">
+                <div className="text-[10px] text-slate-400 leading-snug line-clamp-2">
                   {language === 'ar' ? stage.subtitleAr : stage.subtitle}
                 </div>
 
-                {/* Subtle active status pill */}
+                {/* Subtle active status indicator */}
                 {isSelected && (
-                  <div className="mt-3 pt-2 border-t border-white/10 flex items-center gap-1.5 text-[10px] text-orange-400 font-mono">
+                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center gap-1.5 text-[10px] text-orange-400 font-mono">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-                    <span>{language === 'ar' ? 'عرض التفاصيل' : 'Active Layer'}</span>
+                    <span>{language === 'ar' ? 'الطبقة النشطة' : 'Active Layer'}</span>
                   </div>
                 )}
               </button>
@@ -292,7 +292,7 @@ export default function EdgeToEnterpriseDiagram() {
         </div>
 
         {/* Selected Stage Deep-Dive Architectural Breakdown Box */}
-        <div className="mt-8 pt-6 border-t border-white/10 bg-[#0C1222] rounded-xl p-5 sm:p-7 border border-white/5 relative z-10">
+        <div className="mt-7 pt-6 border-t border-white/10 bg-[#0C1222] rounded-md p-5 sm:p-6 border border-white/5 relative z-10">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="lg:max-w-xl">
               <div className="flex items-center gap-2 text-xs font-mono text-orange-400 uppercase tracking-wider mb-1">
