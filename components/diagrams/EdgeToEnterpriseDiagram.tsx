@@ -48,7 +48,7 @@ export default function EdgeToEnterpriseDiagram() {
       subtitle: 'Multi-node compute & distributed workloads',
       subtitleAr: 'منصات حوسبة وتوزيع أحمال العمل',
       role: 'Supports resilient high-availability computing across distributed workloads.',
-      roleAr: 'دعم الحوسبة عالية التوافر والمصممة لتحمل أقصى متطلبات التشغيل عبر أحمال العمل الموزعة.',
+      roleAr: 'دعم حوسبة مرنة وعالية التوافر عبر أحمال العمل الموزعة.',
     },
     {
       id: 'data',

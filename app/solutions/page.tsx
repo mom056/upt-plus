@@ -67,7 +67,7 @@ export default function SolutionsOverviewPage() {
         'Minimized risk of unplanned operational disruptions from cyber incidents',
       ],
       outcomesAr: [
-        'تقليص نقاط الضعف الفردية عبر أحمال العمل الحيوية',
+        'تقليص نقاط الفشل الفردية عبر أحمال العمل الحيوية',
         'حماية أصول البيانات المؤسسية والمعاملات الحساسة',
         'تقليص مخاطر التوقف غير المخطط الناتج عن الحوادث السيبرانية',
       ],
