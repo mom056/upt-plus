@@ -90,9 +90,9 @@ export default function SignatureHero() {
               <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
                 {/* Horizontal & Vertical Engineering Datum Rails */}
                 <line x1="0%" y1="45%" x2="100%" y2="45%" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="6 6" />
-                <line x1="38%" y1="0%" x2="38%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-                <line x1="68%" y1="0%" x2="68%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-                <line x1="92%" y1="0%" x2="92%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                <line x1="36%" y1="0%" x2="36%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                <line x1="60%" y1="0%" x2="60%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+                <line x1="82%" y1="0%" x2="82%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
 
                 {/* Passive Architectural Interconnects */}
                 <line x1="8%" y1="45%" x2="36%" y2="22%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
@@ -104,7 +104,7 @@ export default function SignatureHero() {
 
                 {/* Security Protected Boundary (Subtle V-Shield Convergence Geometry) */}
                 <polygon
-                  points="140,20 210,20 190,85 160,85"
+                  points="130,12 210,12 170,88"
                   fill="rgba(107,33,168,0.08)"
                   stroke="#9333EA"
                   strokeWidth="1.5"
@@ -112,7 +112,7 @@ export default function SignatureHero() {
                   className="hidden sm:block"
                 />
 
-                {/* THE UPT SIGNAL (Continuous Orange Architectural Route) */}
+                {/* Gate 1.3: THE UPT SIGNAL (Continuous Origin -> Routing -> Exit Datum) */}
                 <path
                   d="M 8% 45% L 36% 22% L 60% 45% L 82% 72% L 82% 100%"
                   fill="none"
@@ -124,6 +124,9 @@ export default function SignatureHero() {
 
                 {/* Active Route Pulse Anchor */}
                 <circle cx="60%" cy="45%" r="3.5" fill="#FF7A00" />
+                
+                {/* Gate 1.3: Downward Signal Exit Cue at Datum (82%) */}
+                <circle cx="82%" cy="100%" r="3" fill="#FF7A00" />
               </svg>
 
               {/* Open Architectural Node Labels (NO CARD BOXES) */}
