@@ -47,108 +47,115 @@ export default function SignatureEdgeSequence() {
         <div className="hidden md:block relative">
           
           {/* Top Rail Header */}
-          <div className="flex items-center justify-between pb-3 mb-8 border-b border-white/5 text-[10px] font-mono text-slate-500">
+          <div className="flex items-center justify-between pb-3 mb-6 border-b border-white/5 text-[10px] font-mono text-slate-500">
             <span className="uppercase">TRANSFORMING ARCHITECTURAL RAIL</span>
             <span className="text-orange-400 uppercase tracking-wider">
               {language === 'ar' ? 'مسار التحول المعماري' : 'UPT SIGNAL TRANSFORMATION'}
             </span>
           </div>
 
-          {/* Continuous Architectural SVG Schematic */}
-          <div className="relative w-full py-12">
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          {/* Dedicated Architectural SVG Schematic Track */}
+          <div className="w-full h-32 relative mb-6">
+            <svg className="w-full h-full" viewBox="0 0 1000 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Construction Datum Line */}
-              <line x1="0%" y1="50%" x2="100%" y2="50%" stroke="rgba(255,255,255,0.06)" strokeDasharray="6 6" />
+              <line x1="0" y1="60" x2="1000" y2="60" stroke="rgba(255,255,255,0.06)" strokeDasharray="6 6" />
 
-              {/* 01. EDGE -> Ingress Line */}
-              <line x1="0%" y1="50%" x2="18%" y2="50%" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+              {/* 01. EDGE -> Ingress Line to Station 01 (x=80) */}
+              <line x1="0" y1="60" x2="170" y2="60" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="83" cy="60" r="4" fill="#FF7A00" />
 
-              {/* 02. SECURITY -> Protected V-Shield Boundary Geometry */}
+              {/* 02. SECURITY (x=250) -> Protected V-Shield Boundary Geometry */}
               <polygon
-                points="180,15 270,15 240,85 170,85"
-                fill="rgba(107,33,168,0.1)"
+                points="185,15 285,15 255,105 180,105"
+                fill="rgba(107,33,168,0.12)"
                 stroke="#9333EA"
                 strokeWidth="1.5"
                 strokeDasharray="4 3"
               />
-              <line x1="18%" y1="50%" x2="35%" y2="50%" stroke="#FF7A00" strokeWidth="2.5" />
+              <line x1="185" y1="45" x2="185" y2="75" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="170" y1="60" x2="330" y2="60" stroke="#FF7A00" strokeWidth="2.5" />
+              <circle cx="250" cy="60" r="4" fill="#FF7A00" />
 
-              {/* 03. APPLICATIONS & APIs -> Routing Junction */}
-              <circle cx="43%" cy="50%" r="3.5" fill="#FF7A00" />
-              <path d="M 35% 50% L 51% 50%" stroke="#FF7A00" strokeWidth="2.5" />
-              <line x1="43%" y1="32%" x2="43%" y2="68%" stroke="#64748B" strokeWidth="1.5" />
+              {/* 03. APPLICATIONS & APIs (x=416) -> Routing Cross-Junction */}
+              <circle cx="416" cy="60" r="4" fill="#FF7A00" />
+              <line x1="416" y1="30" x2="416" y2="90" stroke="#64748B" strokeWidth="1.5" />
+              <line x1="330" y1="60" x2="500" y2="60" stroke="#FF7A00" strokeWidth="2.5" />
 
-              {/* 04. CLOUD -> 3-Way Symmetrical Distribution */}
-              <path d="M 51% 50% L 57% 25% L 72% 25%" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
-              <path d="M 51% 50% L 72% 50%" stroke="#FF7A00" strokeWidth="2" />
-              <path d="M 51% 50% L 57% 75% L 72% 75%" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+              {/* 04. CLOUD (x=583) -> 3-Way Symmetrical Distribution */}
+              <circle cx="500" cy="60" r="4" fill="#FF7A00" />
+              <path d="M 500 60 L 545 25 L 625 25" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+              <path d="M 500 60 L 625 60" stroke="#FF7A00" strokeWidth="2" />
+              <path d="M 500 60 L 545 95 L 625 95" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
 
-              <circle cx="65%" cy="25%" r="3" fill="#FF7A00" />
-              <circle cx="65%" cy="50%" r="3" fill="#FF7A00" />
-              <circle cx="65%" cy="75%" r="3" fill="#FF7A00" />
+              <circle cx="583" cy="25" r="3.5" fill="#FF7A00" />
+              <circle cx="583" cy="60" r="3.5" fill="#FF7A00" />
+              <circle cx="583" cy="95" r="3.5" fill="#FF7A00" />
 
-              {/* 05. DATA -> Convergence back to single resolved trunk */}
-              <path d="M 72% 25% L 78% 50% L 85% 50%" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
-              <path d="M 72% 50% L 85% 50%" stroke="#FF7A00" strokeWidth="2" />
-              <path d="M 72% 75% L 78% 50% L 85% 50%" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
-              <circle cx="78%" cy="50%" r="3.5" fill="#FF7A00" />
+              {/* 05. DATA (x=750) -> Convergence into 1 resolved route */}
+              <path d="M 625 25 L 670 60 L 750 60" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+              <path d="M 625 60 L 750 60" stroke="#FF7A00" strokeWidth="2" />
+              <path d="M 625 95 L 670 60 L 750 60" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+              <circle cx="670" cy="60" r="4" fill="#FF7A00" />
+              <circle cx="750" cy="60" r="4" fill="#FF7A00" />
 
-              {/* 06. INFRASTRUCTURE -> Grounded Backbone Trunk & Vertical Stanchions */}
-              <line x1="85%" y1="50%" x2="100%" y2="50%" stroke="#FF7A00" strokeWidth="3.5" strokeLinecap="round" />
-              <line x1="91%" y1="28%" x2="91%" y2="72%" stroke="#64748B" strokeWidth="1.5" />
-              <line x1="97%" y1="28%" x2="97%" y2="72%" stroke="#64748B" strokeWidth="1.5" />
-              <circle cx="91%" cy="50%" r="3.5" fill="#FF7A00" />
-              <circle cx="97%" cy="50%" r="3.5" fill="#FF7A00" />
+              {/* 06. INFRASTRUCTURE (x=916) -> Grounded Backbone Trunk & Vertical Stanchions */}
+              <line x1="750" y1="60" x2="1000" y2="60" stroke="#FF7A00" strokeWidth="3.5" strokeLinecap="round" />
+              <line x1="880" y1="25" x2="880" y2="95" stroke="#64748B" strokeWidth="1.5" />
+              <line x1="950" y1="25" x2="950" y2="95" stroke="#64748B" strokeWidth="1.5" />
+              <circle cx="880" cy="60" r="3.5" fill="#FF7A00" />
+              <circle cx="950" cy="60" r="3.5" fill="#FF7A00" />
             </svg>
+          </div>
 
-            {/* 6 Stations Along the Rail */}
-            <div className="grid grid-cols-6 gap-3 relative z-10">
-              {stages.map((stage, idx) => {
-                const isSelected = activeStage === idx;
+          {/* 6 Stations Along the Rail Aligned Underneath */}
+          <div className="grid grid-cols-6 gap-4">
+            {stages.map((stage, idx) => {
+              const isSelected = activeStage === idx;
 
-                return (
-                  <button
-                    key={stage.id}
-                    type="button"
-                    onClick={() => setActiveStage(idx)}
-                    className="text-left rtl:text-right focus:outline-none group cursor-pointer flex flex-col items-start"
-                  >
-                    <div className="flex items-center gap-2 mb-4">
-                      <span
-                        className={'w-3 h-3 rounded-full transition-transform ' +
-                          (isSelected
-                            ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
-                            : stage.isBoundary
-                            ? 'bg-purple-500 ring-2 ring-purple-500/20'
-                            : 'bg-slate-500 group-hover:bg-slate-300')}
-                      />
-                      <span className="text-[10px] font-mono text-slate-500">
-                        {stage.num}
-                      </span>
-                    </div>
-
-                    <div
-                      className={'text-xs font-mono font-bold uppercase tracking-wider transition-colors ' +
-                        (isSelected
-                          ? 'text-orange-400'
+              return (
+                <button
+                  key={stage.id}
+                  type="button"
+                  onClick={() => setActiveStage(idx)}
+                  className="text-left rtl:text-right focus:outline-none group cursor-pointer flex flex-col items-start pt-2 border-t border-white/5"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className={`w-2 h-2 rounded-full transition-transform ${
+                        isSelected
+                          ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
                           : stage.isBoundary
-                          ? 'text-purple-300 group-hover:text-white'
-                          : 'text-slate-300 group-hover:text-white')}
-                    >
-                      {language === 'ar' ? stage.nameAr : stage.name}
-                    </div>
+                          ? 'bg-purple-500'
+                          : 'bg-slate-500 group-hover:bg-slate-300'
+                      }`}
+                    />
+                    <span className="text-[10px] font-mono text-slate-500">
+                      {stage.num}
+                    </span>
+                  </div>
 
-                    <p className="mt-1 text-[11px] text-slate-400 leading-snug">
-                      {language === 'ar' ? stage.descAr : stage.desc}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
+                  <div
+                    className={`text-xs font-mono font-bold uppercase tracking-wider transition-colors ${
+                      isSelected
+                        ? 'text-orange-400'
+                        : stage.isBoundary
+                        ? 'text-purple-300 group-hover:text-white'
+                        : 'text-slate-300 group-hover:text-white'
+                    }`}
+                  >
+                    {language === 'ar' ? stage.nameAr : stage.name}
+                  </div>
+
+                  <p className="mt-1 text-[11px] text-slate-400 leading-snug">
+                    {language === 'ar' ? stage.descAr : stage.desc}
+                  </p>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Station Detail (Integrated Inline Datum) */}
-          <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
+          <div className="mt-10 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
             <div className="flex items-center gap-2">
               <span className="text-orange-400 font-bold">[{current.num}]</span>
               <span className="text-white font-bold">{language === 'ar' ? current.nameAr : current.name}:</span>
@@ -181,12 +188,13 @@ export default function SignatureEdgeSequence() {
                 >
                   {/* Station Node Marker on Vertical Spine */}
                   <span
-                    className={'-ml-6 rtl:-mr-6 rtl:ml-0 w-3.5 h-3.5 rounded-full shrink-0 mt-1 transition-transform ' +
-                      (isSelected
+                    className={`-ml-6 rtl:-mr-6 rtl:ml-0 w-3.5 h-3.5 rounded-full shrink-0 mt-1 transition-transform ${
+                      isSelected
                         ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
                         : stage.isBoundary
                         ? 'bg-purple-500 ring-2 ring-purple-500/20'
-                        : 'bg-slate-400')}
+                        : 'bg-slate-400'
+                    }`}
                   />
 
                   {/* Stage Details */}
@@ -196,12 +204,13 @@ export default function SignatureEdgeSequence() {
                         {stage.num}
                       </span>
                       <span
-                        className={'text-xs font-mono font-bold uppercase tracking-wider ' +
-                          (isSelected
+                        className={`text-xs font-mono font-bold uppercase tracking-wider ${
+                          isSelected
                             ? 'text-orange-400'
                             : stage.isBoundary
                             ? 'text-purple-300'
-                            : 'text-white')}
+                            : 'text-white'
+                        }`}
                       >
                         {language === 'ar' ? stage.nameAr : stage.name}
                       </span>
