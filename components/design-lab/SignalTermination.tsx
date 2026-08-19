@@ -8,17 +8,21 @@ export default function SignalTermination() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-20 sm:py-28 bg-[#050811] text-slate-100 relative overflow-hidden border-t border-white/10 text-center">
+    <section className="py-20 sm:py-28 bg-[#080D1A] text-slate-100 relative overflow-hidden border-t border-white/5 text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
         
-        <div className="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/40 flex items-center justify-center text-orange-400 mb-6 shadow-lg shadow-orange-500/5">
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="12" y1="19" x2="12" y2="5" />
-            <polyline points="5 12 12 5 19 12" />
-          </svg>
+        {/* The Upward Vector Termination (Direct Geometric Continuation of UPT Signal ↑) */}
+        <div className="mb-8 flex flex-col items-center">
+          <div className="w-0.5 h-12 bg-[#FF7A00]" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center text-orange-400 -mt-1">
+            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5" />
+              <polyline points="5 12 12 5 19 12" />
+            </svg>
+          </div>
         </div>
 
-        <div className="text-[11px] font-mono uppercase tracking-widest text-orange-400 font-bold mb-3">
+        <div className="text-[10px] font-mono uppercase tracking-widest text-orange-400 font-bold mb-3">
           {language === 'ar' ? 'اكتمال المسار المعماري' : 'UPT / RESOLUTION'}
         </div>
 
