@@ -12,7 +12,7 @@ export default function HeroSection() {
   const { language, t, isRTL } = useLanguage();
 
   const corePillars = [
-    { num: '01', name: 'Cybersecurity', nameAr: 'الأمن السيبراني', posture: 'BOUNDARY', href: '/solutions#cybersecurity' },
+    { num: '01', name: 'Cybersecurity', nameAr: 'الأمن السيبراني', posture: 'BOUNDARY', href: '/solutions#cybersecurity', isBoundary: true },
     { num: '02', name: 'Cloud Computing', nameAr: 'الحوسبة السحابية', posture: 'DISTRIBUTION', href: '/solutions#cloud' },
     { num: '03', name: 'Digital Infrastructure', nameAr: 'البنية التحتية الرقمية', posture: 'BACKBONE', href: '/solutions#infrastructure' },
   ];
@@ -59,8 +59,8 @@ export default function HeroSection() {
               )}
             </h1>
 
-            {/* Core Mission Subtitle */}
-            <p className="text-xs sm:text-sm font-mono text-purple-300 tracking-wide uppercase">
+            {/* Core Mission Subtitle (Neutral Slate Typography) */}
+            <p className="text-xs sm:text-sm font-mono text-slate-400 tracking-wide uppercase">
               {t.hero.subtitle}
             </p>
 
@@ -86,7 +86,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Sub-Hero Architecture Datum Strip */}
+        {/* Sub-Hero Architecture Datum Strip (Strict Semantic Color: Purple ONLY for Boundary) */}
         <div className="mt-12 sm:mt-16 pt-6 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6">
           {corePillars.map((pillar) => (
             <Link
@@ -101,7 +101,10 @@ export default function HeroSection() {
                 <span className="text-xs font-bold font-mono tracking-wider uppercase text-slate-300 group-hover:text-white transition-colors truncate">
                   {language === 'ar' ? pillar.nameAr : pillar.name}
                 </span>
-                <span className="text-[9px] font-mono text-purple-400/80 hidden sm:inline">
+                <span
+                  className={'text-[9px] font-mono hidden sm:inline ' +
+                    (pillar.isBoundary ? 'text-purple-400/80' : 'text-slate-500')}
+                >
                   [{pillar.posture}]
                 </span>
               </div>

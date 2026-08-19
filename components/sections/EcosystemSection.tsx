@@ -50,7 +50,7 @@ export default function EcosystemSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 relative">
+    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -58,7 +58,7 @@ export default function EcosystemSection() {
           <SectionMarker
             number="05"
             label={language === 'ar' ? 'المنظومة والتكامل التقني' : 'TECHNOLOGY ECOSYSTEM'}
-            variant="purple"
+            variant="navy"
             isLightSection={true}
             className="mb-4"
           />
@@ -76,7 +76,7 @@ export default function EcosystemSection() {
           </p>
         </div>
 
-        {/* Open Integration Field */}
+        {/* Open Integration Field (DOMAIN 01 - 04 with Neutral Navy/Slate Typography) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 pt-4 border-t border-slate-200">
           {ecosystemDomains.map((item) => (
             <div
@@ -84,8 +84,8 @@ export default function EcosystemSection() {
               className="flex flex-col pb-6 border-b border-slate-200"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="font-mono text-xs font-bold text-purple-700">
-                  TIER {item.num}
+                <span className="font-mono text-xs font-bold text-slate-600">
+                  DOMAIN {item.num}
                 </span>
                 <span className="text-[10px] font-mono text-slate-400 uppercase">
                   INTEGRATION DOMAIN

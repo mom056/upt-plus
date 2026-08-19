@@ -102,7 +102,7 @@ export default function EdgeToEnterpriseDiagram() {
             <line x1="0" y1="60" x2="170" y2="60" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
             <circle cx="83" cy="60" r="4" fill="#FF7A00" />
 
-            {/* 02. SECURITY -> Protected V-Shield Boundary Geometry */}
+            {/* 02. SECURITY -> Protected V-Shield Boundary Geometry (ONLY PURPLE IN DIAGRAM) */}
             <polygon
               points="185,15 285,15 255,105 180,105"
               fill="rgba(107,33,168,0.12)"
@@ -203,15 +203,10 @@ export default function EdgeToEnterpriseDiagram() {
       </div>
 
       {/* ==================================================== */}
-      {/* MOBILE (< md): TRANSFORMING VERTICAL ARCHITECTURAL SPINE */}
+      {/* MOBILE (< md): TRANSFORMING VERTICAL ARCHITECTURE (NOT A TIMELINE) */}
       {/* ==================================================== */}
-      <div className="block md:hidden relative pl-8 rtl:pr-8 rtl:pl-0">
-        
-        {/* Continuous Vertical Transforming Signal Axis */}
-        <div className="absolute left-3 rtl:right-3 rtl:left-auto top-2 bottom-2 w-0.5 bg-[#FF7A00]" />
-
-        {/* Vertical Spine Stations */}
-        <div className="space-y-10 relative z-10">
+      <div className="block md:hidden relative">
+        <div className="space-y-6">
           {stages.map((stage, idx) => {
             const isSelected = activeStage === idx;
 
@@ -220,21 +215,98 @@ export default function EdgeToEnterpriseDiagram() {
                 key={stage.id}
                 type="button"
                 onClick={() => setActiveStage(idx)}
-                className="w-full text-left rtl:text-right focus:outline-none group cursor-pointer flex items-start gap-4"
+                className="w-full text-left rtl:text-right focus:outline-none group cursor-pointer flex items-stretch gap-4"
               >
-                {/* Station Node Marker on Vertical Spine */}
-                <span
-                  className={'-ml-6 rtl:-mr-6 rtl:ml-0 w-3.5 h-3.5 rounded-full shrink-0 mt-1 transition-transform ' +
-                    (isSelected
-                      ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
-                      : stage.isBoundary
-                      ? 'bg-purple-500 ring-2 ring-purple-500/20'
-                      : 'bg-slate-400')}
-                />
+                {/* Dedicated Vertical Architectural Transformation Graphic Column */}
+                <div className="w-10 shrink-0 relative flex flex-col items-center">
+                  <svg className="w-10 h-24" viewBox="0 0 32 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    
+                    {/* STAGE 01: EDGE (Clean Ingress Vertical Route) */}
+                    {idx === 0 && (
+                      <>
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                        <circle cx="16" cy="32" r="3.5" fill="#FF7A00" />
+                      </>
+                    )}
+
+                    {/* STAGE 02: SECURITY (Route Visibly Passes Through Purple V-Shield Boundary) */}
+                    {idx === 1 && (
+                      <>
+                        <polygon
+                          points="6,8 26,8 22,54 10,54"
+                          fill="rgba(107,33,168,0.18)"
+                          stroke="#9333EA"
+                          strokeWidth="1.5"
+                          strokeDasharray="3 2"
+                        />
+                        <line x1="10" y1="26" x2="10" y2="40" stroke="#C084FC" strokeWidth="2" strokeLinecap="round" />
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="2.5" />
+                        <circle cx="16" cy="32" r="3.5" fill="#FF7A00" />
+                      </>
+                    )}
+
+                    {/* STAGE 03: APPLICATIONS & APIs (Routing Cross-Junction & Bypass Geometry) */}
+                    {idx === 2 && (
+                      <>
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="2.5" />
+                        <line x1="6" y1="32" x2="26" y2="32" stroke="#64748B" strokeWidth="1.5" />
+                        <circle cx="16" cy="32" r="3.5" fill="#FF7A00" />
+                        <circle cx="6" cy="32" r="2" fill="#64748B" />
+                        <circle cx="26" cy="32" r="2" fill="#64748B" />
+                      </>
+                    )}
+
+                    {/* STAGE 04: CLOUD (Route Visibly Branches into 3 Parallel Distributed Paths) */}
+                    {idx === 3 && (
+                      <>
+                        {/* 1 in -> 3 distributed branches */}
+                        <path d="M 16 0 L 16 12 L 6 22 L 6 64" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="2" />
+                        <path d="M 16 0 L 16 12 L 26 22 L 26 64" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                        
+                        <circle cx="6" cy="38" r="2.5" fill="#FF7A00" />
+                        <circle cx="16" cy="38" r="2.5" fill="#FF7A00" />
+                        <circle cx="26" cy="38" r="2.5" fill="#FF7A00" />
+                      </>
+                    )}
+
+                    {/* STAGE 05: DATA (3 Distributed Paths Visibly Converge Back into 1 Route) */}
+                    {idx === 4 && (
+                      <>
+                        {/* 3 in -> 1 converged route */}
+                        <path d="M 6 0 L 6 22 L 16 38 L 16 64" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="2" />
+                        <path d="M 26 0 L 26 22 L 16 38 L 16 64" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+
+                        <circle cx="6" cy="12" r="2" fill="#FF7A00" />
+                        <circle cx="26" cy="12" r="2" fill="#FF7A00" />
+                        <circle cx="16" cy="38" r="3.5" fill="#FF7A00" />
+                      </>
+                    )}
+
+                    {/* STAGE 06: INFRASTRUCTURE (Route Resolves into Grounded Structural Backbone) */}
+                    {idx === 5 && (
+                      <>
+                        {/* Heavy vertical trunk */}
+                        <line x1="16" y1="0" x2="16" y2="64" stroke="#FF7A00" strokeWidth="3.5" strokeLinecap="round" />
+                        
+                        {/* Structural Stanchion Cross-Ties */}
+                        <line x1="4" y1="18" x2="28" y2="18" stroke="#64748B" strokeWidth="1.5" />
+                        <line x1="4" y1="46" x2="28" y2="46" stroke="#64748B" strokeWidth="1.5" />
+                        
+                        <circle cx="4" cy="18" r="2" fill="#64748B" />
+                        <circle cx="28" cy="18" r="2" fill="#64748B" />
+                        <circle cx="16" cy="18" r="3" fill="#FF7A00" />
+                        <circle cx="16" cy="46" r="3" fill="#FF7A00" />
+                      </>
+                    )}
+
+                  </svg>
+                </div>
 
                 {/* Stage Details */}
-                <div className="flex-1 pb-3 border-b border-white/5">
-                  <div className="flex items-center gap-2 mb-0.5">
+                <div className="flex-1 pb-4 border-b border-white/5 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] font-mono text-slate-500">
                       {stage.num}
                     </span>
