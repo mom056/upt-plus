@@ -2,344 +2,267 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/lib/i18n';
-import {
-  Users,
-  Globe2,
-  ShieldAlert,
-  Code2,
-  Cloud,
-  Database,
-  Server,
-  ChevronRight,
-  ChevronDown,
-  Info,
-  CheckCircle2,
-} from 'lucide-react';
-
-interface Stage {
-  id: string;
-  stepNumber: string;
-  title: string;
-  titleAr: string;
-  subtitle: string;
-  subtitleAr: string;
-  icon: any;
-  techDetails: string[];
-  techDetailsAr: string[];
-  operationalRole: string;
-  operationalRoleAr: string;
-  accent: 'orange' | 'purple' | 'navy';
-}
 
 export default function EdgeToEnterpriseDiagram() {
-  const { language, isRTL } = useLanguage();
-  const [selectedStageIndex, setSelectedStageIndex] = useState<number>(2); // Default to Security
+  const { language } = useLanguage();
+  const [activeStage, setActiveStage] = useState<number>(1); // Default to Security
 
-  const stages: Stage[] = [
-    {
-      id: 'users',
-      stepNumber: '01',
-      title: 'Users & Endpoints',
-      titleAr: 'المستخدمون والأجهزة',
-      subtitle: 'Global workforce, branch offices, consumer apps, IoT.',
-      subtitleAr: 'الكوادر الموزعة، الفروع، تطبيقات العملاء، وأجهزة IoT.',
-      icon: Users,
-      techDetails: [
-        'Context-Aware Device Posture',
-        'Multi-Factor Authentication (MFA)',
-        'Global Branch SD-WAN Connections',
-      ],
-      techDetailsAr: [
-        'التحقق من حالة وسلامة أجهزة الاتصال',
-        'المصادقة متعددة العوامل المشفرة',
-        'ربط فروع المقرات عبر شبكات SD-WAN',
-      ],
-      operationalRole:
-        'Every incoming request is tagged with device telemetry and cryptographic origin metadata.',
-      operationalRoleAr:
-        'يتم وسم كل طلب بالبيانات الوصفية للأصل والتشفير وحالة الجهاز قبل النقل.',
-      accent: 'navy',
-    },
+  const stages = [
     {
       id: 'edge',
-      stepNumber: '02',
-      title: 'Edge / Delivery',
-      titleAr: 'الحافة والتوزيع الطرفي',
-      subtitle: 'Global Anycast DNS, routing optimization, TLS termination.',
-      subtitleAr: 'نظام DNS الموزع عالمياً، تحسين التوجيه، وإنهاء التشفير.',
-      icon: Globe2,
-      techDetails: [
-        'BGP Anycast Routing Acceleration',
-        'Volumetric DDoS Traffic Scrubbing',
-        'Edge Static Content & Asset Caching',
-      ],
-      techDetailsAr: [
-        'تسريع توجيه المسارات عبر Anycast',
-        'تنقية التدفقات الضخمة لهجمات DDoS',
-        'تخزين المحتوى الثابت على الحافة القريبة',
-      ],
-      operationalRole:
-        'Absorbs massive traffic anomalies at the edge before requests reach core infrastructure.',
-      operationalRoleAr:
-        'استيعاب أي قفزات مفاجئة أو هجمات عند الحافة الطرفية قبل وصولها للأنظمة الأساسية.',
-      accent: 'purple',
+      num: '01',
+      name: 'Edge',
+      nameAr: 'الحافة',
+      subtitle: 'Global Anycast DNS & routing optimization',
+      subtitleAr: 'نظام DNS الموزع عالمياً وتحسين التوجيه',
+      role: 'Absorbs traffic anomalies at the edge before requests reach core infrastructure.',
+      roleAr: 'استيعاب أي قفزات مفاجئة أو هجمات عند الحافة الطرفية قبل وصولها للأنظمة الأساسية.',
     },
     {
       id: 'security',
-      stepNumber: '03',
-      title: 'Security Boundary',
-      titleAr: 'سياج الأمان وانعدام الثقة',
-      subtitle: 'Zero Trust enforcement, API shields, WAF inspection.',
-      subtitleAr: 'تطبيق Zero Trust، درع واجهات البرمجة، وفحص WAF.',
-      icon: ShieldAlert,
-      techDetails: [
-        'Deep Web Application Firewall (WAF)',
-        'Automated Bot & Scraping Detection',
-        'API Token Introspection & Schema Guard',
-      ],
-      techDetailsAr: [
-        'جدار حماية تطبيقات الويب المتقدم (WAF)',
-        'كشف الروبوتات الاستحواذية الخبيثة',
-        'فحص تواقيع ومخططات واجهات البرمجة',
-      ],
-      operationalRole:
-        'Continuous cryptographic validation ensuring only authorized payloads proceed.',
-      operationalRoleAr:
-        'تحقق تشفيري مستمر يضمن عدم مرور أي طلبات غير مستوفية لسياسات الأمان.',
-      accent: 'orange',
+      num: '02',
+      name: 'Security',
+      nameAr: 'الأمان السيبراني',
+      isBoundary: true,
+      subtitle: 'Zero Trust enforcement & access verification',
+      subtitleAr: 'تطبيق Zero Trust والتحقق من الوصول',
+      role: 'Continuous cryptographic validation ensuring only authorized payloads proceed.',
+      roleAr: 'تحقق تشفيري مستمر يضمن عدم مرور أي طلبات غير مستوفية لسياسات الأمان.',
     },
     {
-      id: 'applications',
-      stepNumber: '04',
-      title: 'Applications & APIs',
-      titleAr: 'التطبيقات وواجهات البرمجة',
-      subtitle: 'Decoupled microservices, container fabrics, event brokers.',
-      subtitleAr: 'خدمات مصغرة، نسيج الحاويات، ووسطاء الرسائل اللحظية.',
-      icon: Code2,
-      techDetails: [
-        'Kubernetes Container Ingress Routing',
-        'Event-Driven Streaming & Async Queues',
-        'Stateless Microservice Orchestration',
-      ],
-      techDetailsAr: [
-        'توجيه طلبات الحاويات على Kubernetes',
-        'المعالجة اللحظية المعتمدة على الأحداث',
-        'تشغيل وتنسيق الخدمات المصغرة المرنة',
-      ],
-      operationalRole:
-        'Scales dynamically with business demand while maintaining service boundaries.',
-      operationalRoleAr:
-        'توسع تلقائي مع حجم الطلب مع الحفاظ على استقلالية الخدمات وسرعة استجابتها.',
-      accent: 'purple',
+      id: 'apps',
+      num: '03',
+      name: 'Applications & APIs',
+      nameAr: 'التطبيقات و APIs',
+      subtitle: 'Decoupled microservices & API routing',
+      subtitleAr: 'خدمات مصغرة وتوجيه واجهات البرمجة',
+      role: 'Scales dynamically with business demand while maintaining service boundaries.',
+      roleAr: 'توسع تلقائي مع حجم الطلب مع الحفاظ على استقلالية الخدمات وسرعة استجابتها.',
     },
     {
       id: 'cloud',
-      stepNumber: '05',
-      title: 'Cloud Fabric',
-      titleAr: 'النسيج السحابي الهجين',
-      subtitle: 'Multi-zone hybrid cloud, private VPCs, autoscaling compute.',
-      subtitleAr: 'سحابة هجينة متعددة المناطق، شبكات خاصة، وحوسبة مرنة.',
-      icon: Cloud,
-      techDetails: [
-        'Multi-Availability Zone Compute Clusters',
-        'Transit Gateway Encrypted Mesh',
-        'Self-Healing Infrastructure as Code',
-      ],
-      techDetailsAr: [
-        'عناقيد حوسبة موزعة عبر مناطق متعددة',
-        'شبكة بوابات عبور مشفرة ومؤمنة',
-        'بنية تحتية برمجية ذاتية المعالجة',
-      ],
-      operationalRole:
-        'Provides resilient high-availability computing with sub-second failover.',
-      operationalRoleAr:
-        'توفر حوسبة عالية التوافر مع تحويل تلقائي فوري للمسارات عند أي طارئ.',
-      accent: 'navy',
+      num: '04',
+      name: 'Cloud',
+      nameAr: 'الحوسبة السحابية',
+      isDistributed: true,
+      subtitle: 'Multi-node compute & distributed workloads',
+      subtitleAr: 'منصات حوسبة وتوزيع أحمال العمل',
+      role: 'Provides resilient high-availability computing with sub-second failover.',
+      roleAr: 'توفر حوسبة عالية التوافر مع تحويل تلقائي فوري للمسارات عند أي طارئ.',
     },
     {
       id: 'data',
-      stepNumber: '06',
-      title: 'Data & Secrets Vault',
-      titleAr: 'البيانات والأسرار المشفرة',
-      subtitle: 'Hardware security modules, active-active DB replication.',
-      subtitleAr: 'وحدات تشفير عتادية (HSM)، ومزامنة قواعد البيانات.',
-      icon: Database,
-      techDetails: [
-        'Field-Level Cryptographic Encryption',
-        'Multi-Region Transactional Replication',
-        'Immutable Compliance Audit Trails',
-      ],
-      techDetailsAr: [
-        'تشفير دقيق على مستوى الحقول والبيانات',
-        'مزامنة متزامنة للمعاملات عبر المناطق',
-        'سجلات تدقيق غير قابلة للتعديل أو الحذف',
-      ],
-      operationalRole:
-        'Protects customer assets, intellectual property, and regulatory records.',
-      operationalRoleAr:
-        'حماية قصوى لأصول العملاء وسجلاتهم المالية والبيانات الخاضعة للتنظيم.',
-      accent: 'orange',
+      num: '05',
+      name: 'Data',
+      nameAr: 'البيانات',
+      isConverged: true,
+      subtitle: 'Secure storage & cryptographic management',
+      subtitleAr: 'التخزين الآمن وإدارة البيانات',
+      role: 'Protects enterprise assets, cryptographic keys, and regulatory records.',
+      roleAr: 'حماية قصوى لأصول المؤسسة والمفاتيح المشفرة والبيانات الخاضعة للتنظيم.',
     },
     {
-      id: 'infrastructure',
-      stepNumber: '07',
-      title: 'Physical Infrastructure',
-      titleAr: 'البنية التحتية الفيزيائية',
-      subtitle: 'Data centers, high-density optical fiber, power & cooling.',
-      subtitleAr: 'مراكز البيانات، كوابل الألياف الضوئية عالية الكثافة، والطاقة والتبريد.',
-      icon: Server,
-      techDetails: [
-        'Enterprise Datacenter Redundancy',
-        'Diverse Dual-Conduit Fiber Routes',
-        'Real-Time Environmental Telemetry',
-      ],
-      techDetailsAr: [
-        'معايير الاعتمادية والتكرارية لمراكز البيانات',
-        'مسارات ألياف مزدوجة ومحمية فيزيائياً',
-        'قياسات بيئية وحرارية على مدار الساعة',
-      ],
-      operationalRole:
-        'Guarantees the unbroken physical foundation powering every software layer.',
-      operationalRoleAr:
-        'تضمن الأساس الفيزيائي الصلب والمستقر لتشغيل كافة الطبقات البرمجية.',
-      accent: 'navy',
+      id: 'infra',
+      num: '06',
+      name: 'Infrastructure',
+      nameAr: 'البنية التحتية',
+      isBackbone: true,
+      subtitle: 'Physical transmission & system backbone',
+      subtitleAr: 'العمود الفقري ومسارات النقل الفيزيائي',
+      role: 'Guarantees the unbroken physical foundation powering every software layer.',
+      roleAr: 'تضمن الأساس الفيزيائي الصلب والمستقر لتشغيل كافة الطبقات البرمجية.',
     },
   ];
 
-  const activeStage = stages[selectedStageIndex];
+  const current = stages[activeStage];
 
   return (
     <div className="w-full">
-      {/* Visual Workflow Map */}
-      <div className="relative bg-[#080D1A] border border-white/15 rounded-lg p-4 sm:p-6 lg:p-7 overflow-hidden shadow-2xl">
-        {/* Subtle Background Glow */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-purple-900/15 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Integration Layer Banner */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
-          <div>
-            <div className="text-[11px] font-mono tracking-widest uppercase text-orange-400 font-bold">
-              {language === 'ar' ? 'نموذج التدفق المعماري الشامل' : 'END-TO-END ARCHITECTURAL FLOW'}
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mt-0.5">
-              {language === 'ar' ? 'من الحافة إلى البنية المؤسسية' : 'From Edge to Enterprise'}
-            </h3>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-[#11182B] border border-white/10 text-xs text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="font-mono text-[11px]">
-              {language === 'ar' ? 'طبقة UPT PLUS التكاملية والتشغيلية' : 'UPT PLUS Integration & Operations Fabric'}
-            </span>
-          </div>
+      
+      {/* ==================================================== */}
+      {/* DESKTOP (>= md): TRANSFORMING ARCHITECTURAL RAIL */}
+      {/* ==================================================== */}
+      <div className="hidden md:block relative">
+        
+        {/* Top Rail Header */}
+        <div className="flex items-center justify-between pb-3 mb-6 border-b border-white/5 text-[10px] font-mono text-slate-500">
+          <span className="uppercase">TRANSFORMING ARCHITECTURAL RAIL</span>
+          <span className="text-orange-400 uppercase tracking-wider">
+            {language === 'ar' ? 'مسار التحول المعماري' : 'UPT SIGNAL TRANSFORMATION'}
+          </span>
         </div>
 
-        {/* Flow Stage Node Track */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 relative z-10">
+        {/* Dedicated Architectural SVG Schematic Track */}
+        <div className="w-full h-32 relative mb-6">
+          <svg className="w-full h-full" viewBox="0 0 1000 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Construction Datum Line */}
+            <line x1="0" y1="60" x2="1000" y2="60" stroke="rgba(255,255,255,0.06)" strokeDasharray="6 6" />
+
+            {/* 01. EDGE -> Ingress Line to Station 01 */}
+            <line x1="0" y1="60" x2="170" y2="60" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="83" cy="60" r="4" fill="#FF7A00" />
+
+            {/* 02. SECURITY -> Protected V-Shield Boundary Geometry */}
+            <polygon
+              points="185,15 285,15 255,105 180,105"
+              fill="rgba(107,33,168,0.12)"
+              stroke="#9333EA"
+              strokeWidth="1.5"
+              strokeDasharray="4 3"
+            />
+            <line x1="185" y1="45" x2="185" y2="75" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="170" y1="60" x2="330" y2="60" stroke="#FF7A00" strokeWidth="2.5" />
+            <circle cx="250" cy="60" r="4" fill="#FF7A00" />
+
+            {/* 03. APPLICATIONS & APIs -> Routing Cross-Junction */}
+            <circle cx="416" cy="60" r="4" fill="#FF7A00" />
+            <line x1="416" y1="30" x2="416" y2="90" stroke="#64748B" strokeWidth="1.5" />
+            <line x1="330" y1="60" x2="500" y2="60" stroke="#FF7A00" strokeWidth="2.5" />
+
+            {/* 04. CLOUD -> 3-Way Symmetrical Distribution */}
+            <circle cx="500" cy="60" r="4" fill="#FF7A00" />
+            <path d="M 500 60 L 545 25 L 625 25" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M 500 60 L 625 60" stroke="#FF7A00" strokeWidth="2" />
+            <path d="M 500 60 L 545 95 L 625 95" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+
+            <circle cx="583" cy="25" r="3.5" fill="#FF7A00" />
+            <circle cx="583" cy="60" r="3.5" fill="#FF7A00" />
+            <circle cx="583" cy="95" r="3.5" fill="#FF7A00" />
+
+            {/* 05. DATA -> Convergence into 1 resolved route */}
+            <path d="M 625 25 L 670 60 L 750 60" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M 625 60 L 750 60" stroke="#FF7A00" strokeWidth="2" />
+            <path d="M 625 95 L 670 60 L 750 60" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="670" cy="60" r="4" fill="#FF7A00" />
+            <circle cx="750" cy="60" r="4" fill="#FF7A00" />
+
+            {/* 06. INFRASTRUCTURE -> Grounded Backbone Trunk & Vertical Stanchions */}
+            <line x1="750" y1="60" x2="1000" y2="60" stroke="#FF7A00" strokeWidth="3.5" strokeLinecap="round" />
+            <line x1="880" y1="25" x2="880" y2="95" stroke="#64748B" strokeWidth="1.5" />
+            <line x1="950" y1="25" x2="950" y2="95" stroke="#64748B" strokeWidth="1.5" />
+            <circle cx="880" cy="60" r="3.5" fill="#FF7A00" />
+            <circle cx="950" cy="60" r="3.5" fill="#FF7A00" />
+          </svg>
+        </div>
+
+        {/* 6 Stations Along the Rail Aligned Underneath */}
+        <div className="grid grid-cols-6 gap-4">
           {stages.map((stage, idx) => {
-            const isSelected = selectedStageIndex === idx;
-            const Icon = stage.icon;
+            const isSelected = activeStage === idx;
 
             return (
               <button
                 key={stage.id}
                 type="button"
-                onClick={() => setSelectedStageIndex(idx)}
-                className={`relative flex flex-col p-3.5 rounded-md border text-left rtl:text-right transition-all duration-200 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
-                  isSelected
-                    ? 'bg-[#151D32] border-orange-500 shadow-md scale-[1.01]'
-                    : 'bg-[#0D1326] border-white/10 hover:border-purple-400/50 hover:bg-[#11182B]'
-                }`}
+                onClick={() => setActiveStage(idx)}
+                className="text-left rtl:text-right focus:outline-none group cursor-pointer flex flex-col items-start pt-2 border-t border-white/5"
               >
-                {/* Stage Step Number & Connector Arrow */}
-                <div className="flex items-center justify-between w-full mb-2.5">
+                <div className="flex items-center gap-2 mb-2">
                   <span
-                    className={`font-mono text-xs font-bold ${
-                      isSelected ? 'text-orange-400' : 'text-slate-500 group-hover:text-purple-400'
-                    }`}
-                  >
-                    {stage.stepNumber}
+                    className={'w-2 h-2 rounded-full transition-transform ' +
+                      (isSelected
+                        ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
+                        : stage.isBoundary
+                        ? 'bg-purple-500'
+                        : 'bg-slate-500 group-hover:bg-slate-300')}
+                  />
+                  <span className="text-[10px] font-mono text-slate-500">
+                    {stage.num}
                   </span>
-
-                  <div
-                    className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-                      isSelected
-                        ? 'bg-orange-500/20 text-orange-400'
-                        : 'bg-white/5 text-slate-400 group-hover:text-white'
-                    }`}
-                  >
-                    <Icon className="w-3.5 h-3.5" />
-                  </div>
                 </div>
 
-                <div className="text-xs font-bold text-white mb-1 group-hover:text-orange-300 transition-colors truncate">
-                  {language === 'ar' ? stage.titleAr : stage.title}
+                <div
+                  className={'text-xs font-mono font-bold uppercase tracking-wider transition-colors ' +
+                    (isSelected
+                      ? 'text-orange-400'
+                      : stage.isBoundary
+                      ? 'text-purple-300 group-hover:text-white'
+                      : 'text-slate-300 group-hover:text-white')}
+                >
+                  {language === 'ar' ? stage.nameAr : stage.name}
                 </div>
 
-                <div className="text-[10px] text-slate-400 leading-snug line-clamp-2">
+                <p className="mt-1 text-[11px] text-slate-400 leading-snug">
                   {language === 'ar' ? stage.subtitleAr : stage.subtitle}
-                </div>
-
-                {/* Subtle active status indicator */}
-                {isSelected && (
-                  <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center gap-1.5 text-[10px] text-orange-400 font-mono">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-                    <span>{language === 'ar' ? 'الطبقة النشطة' : 'Active Layer'}</span>
-                  </div>
-                )}
+                </p>
               </button>
             );
           })}
         </div>
 
-        {/* Selected Stage Deep-Dive Architectural Breakdown Box */}
-        <div className="mt-7 pt-6 border-t border-white/10 bg-[#0C1222] rounded-md p-5 sm:p-6 border border-white/5 relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="lg:max-w-xl">
-              <div className="flex items-center gap-2 text-xs font-mono text-orange-400 uppercase tracking-wider mb-1">
-                <span>{language === 'ar' ? `المرحلة المعمارية ${activeStage.stepNumber}` : `ARCHITECTURAL LAYER ${activeStage.stepNumber}`}</span>
-                <span>•</span>
-                <span className="text-slate-400">{language === 'ar' ? activeStage.titleAr : activeStage.title}</span>
-              </div>
-              <h4 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                {language === 'ar' ? activeStage.subtitleAr : activeStage.subtitle}
-              </h4>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {language === 'ar' ? activeStage.operationalRoleAr : activeStage.operationalRole}
-              </p>
-            </div>
-
-            {/* Technical Verification Points */}
-            <div className="bg-[#11182B] p-4 rounded-lg border border-white/10 lg:w-96 shrink-0">
-              <div className="text-[11px] font-mono uppercase text-slate-400 tracking-wider mb-3">
-                {language === 'ar' ? 'الضوابط والتقنيات الأساسية:' : 'Core Protocols & Guardrails:'}
-              </div>
-              <ul className="space-y-2">
-                {(language === 'ar' ? activeStage.techDetailsAr : activeStage.techDetails).map((detail, dIdx) => (
-                  <li key={dIdx} className="flex items-start gap-2 text-xs text-slate-200">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Active Station Detail (Integrated Inline Datum) */}
+        <div className="mt-10 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
+          <div className="flex items-center gap-2">
+            <span className="text-orange-400 font-bold">[{current.num}]</span>
+            <span className="text-white font-bold">{language === 'ar' ? current.nameAr : current.name}:</span>
+            <span className="text-slate-300">{language === 'ar' ? current.roleAr : current.role}</span>
           </div>
-
-          {/* Integrated Operational Layer Callout */}
-          <div className="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-400">
-            <div className="flex items-center gap-2">
-              <Info className="w-4 h-4 text-purple-400 shrink-0" />
-              <span>
-                {language === 'ar'
-                  ? 'تعمل UPT PLUS كطبقة موحدة للتصميم المعماري، والنشر، والتأمين، والتشغيل المستمر عبر كافة المراحل.'
-                  : 'UPT PLUS acts as the unified integration, security, and operational engineering layer across all stages.'}
-              </span>
-            </div>
-            <span className="font-mono text-slate-500 text-[11px]">
-              Multi-Layer Defense &amp; High Availability
-            </span>
-          </div>
+          <span className="text-[10px] text-slate-500 uppercase">UPT CONTROL PLANE</span>
         </div>
+
       </div>
+
+      {/* ==================================================== */}
+      {/* MOBILE (< md): TRANSFORMING VERTICAL ARCHITECTURAL SPINE */}
+      {/* ==================================================== */}
+      <div className="block md:hidden relative pl-8 rtl:pr-8 rtl:pl-0">
+        
+        {/* Continuous Vertical Transforming Signal Axis */}
+        <div className="absolute left-3 rtl:right-3 rtl:left-auto top-2 bottom-2 w-0.5 bg-[#FF7A00]" />
+
+        {/* Vertical Spine Stations */}
+        <div className="space-y-10 relative z-10">
+          {stages.map((stage, idx) => {
+            const isSelected = activeStage === idx;
+
+            return (
+              <button
+                key={stage.id}
+                type="button"
+                onClick={() => setActiveStage(idx)}
+                className="w-full text-left rtl:text-right focus:outline-none group cursor-pointer flex items-start gap-4"
+              >
+                {/* Station Node Marker on Vertical Spine */}
+                <span
+                  className={'-ml-6 rtl:-mr-6 rtl:ml-0 w-3.5 h-3.5 rounded-full shrink-0 mt-1 transition-transform ' +
+                    (isSelected
+                      ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
+                      : stage.isBoundary
+                      ? 'bg-purple-500 ring-2 ring-purple-500/20'
+                      : 'bg-slate-400')}
+                />
+
+                {/* Stage Details */}
+                <div className="flex-1 pb-3 border-b border-white/5">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[10px] font-mono text-slate-500">
+                      {stage.num}
+                    </span>
+                    <span
+                      className={'text-xs font-mono font-bold uppercase tracking-wider ' +
+                        (isSelected
+                          ? 'text-orange-400'
+                          : stage.isBoundary
+                          ? 'text-purple-300'
+                          : 'text-white')}
+                    >
+                      {language === 'ar' ? stage.nameAr : stage.name}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-snug">
+                    {language === 'ar' ? stage.subtitleAr : stage.subtitle}
+                  </p>
+                  <p className="mt-1 text-[11px] text-slate-400 leading-relaxed">
+                    {language === 'ar' ? stage.roleAr : stage.role}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+      </div>
+
     </div>
   );
 }

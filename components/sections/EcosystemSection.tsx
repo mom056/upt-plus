@@ -4,11 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/i18n';
 import SectionMarker from '@/components/ui/SectionMarker';
-import { Cpu, ShieldCheck, Network, Cloud, ArrowRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function EcosystemSection() {
   const { language, isRTL } = useLanguage();
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+  const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
 
   const ecosystemDomains = [
     {
@@ -19,7 +19,6 @@ export default function EcosystemSection() {
         'Engineered to integrate seamlessly with leading public clouds, private OpenStack/VMware clusters, and container fabrics.',
       descriptionAr:
         'مصممة للتكامل السلس مع السحب العامة والخاصة، عناقيد VMware/OpenStack، ونسيج تشغيل الحاويات.',
-      icon: Cloud,
     },
     {
       num: '02',
@@ -29,7 +28,6 @@ export default function EcosystemSection() {
         'Standardized integrations across modern IdPs (SAML/OIDC), hardware security modules, enterprise firewalls, and SIEM platforms.',
       descriptionAr:
         'تكامل قياسي مع مزودي الهويات (SAML/OIDC)، وحدات التشفير العتادية، جدران الحماية، ومنصات إدارة الأحداث الأمنية.',
-      icon: ShieldCheck,
     },
     {
       num: '03',
@@ -39,7 +37,6 @@ export default function EcosystemSection() {
         'Interoperable with carrier routing protocols (BGP/EVPN-VXLAN), software-defined WAN fabrics, and certified structured cabling.',
       descriptionAr:
         'توافق تشغيلي مع بروتوكولات توجيه المشغلين (BGP/EVPN-VXLAN)، شبكات SD-WAN، وتمديدات الكوابل الهيكلية المعتمدة.',
-      icon: Network,
     },
     {
       num: '04',
@@ -49,14 +46,15 @@ export default function EcosystemSection() {
         'Connecting core banking engines, SAP/Oracle ERPs, and specialized industry databases via high-throughput API gateways.',
       descriptionAr:
         'ربط الأنظمة المصرفية الأساسية، أنظمة SAP/Oracle ERP، وقواعد البيانات التخصصية عبر بوابات واجهات برمجة فائقة السرعة.',
-      icon: Cpu,
     },
   ];
 
   return (
-    <section className="py-14 sm:py-24 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 bg-grid-light">
+    <section className="py-20 sm:py-28 bg-[#F7F8FA] text-[#101827] border-b border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
           <SectionMarker
             number="05"
             label={language === 'ar' ? 'المنظومة والتكامل التقني' : 'TECHNOLOGY ECOSYSTEM'}
@@ -78,39 +76,36 @@ export default function EcosystemSection() {
           </p>
         </div>
 
-        {/* 4 Integration Rails */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {ecosystemDomains.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.num}
-                className="bg-white rounded-md p-6 sm:p-7 border border-slate-200 shadow-sm hover:border-purple-300 transition-all"
-              >
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="w-9 h-9 rounded bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-800">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-xs font-bold text-slate-400">
-                    TIER {item.num}
-                  </span>
-                </div>
-
-                <h3 className="text-base sm:text-lg font-bold text-[#0D1326] mb-2">
-                  {language === 'ar' ? item.categoryAr : item.category}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {language === 'ar' ? item.descriptionAr : item.description}
-                </p>
+        {/* Open Integration Field */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 pt-4 border-t border-slate-200">
+          {ecosystemDomains.map((item) => (
+            <div
+              key={item.num}
+              className="flex flex-col pb-6 border-b border-slate-200"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-mono text-xs font-bold text-purple-700">
+                  TIER {item.num}
+                </span>
+                <span className="text-[10px] font-mono text-slate-400 uppercase">
+                  INTEGRATION DOMAIN
+                </span>
               </div>
-            );
-          })}
+
+              <h3 className="text-base sm:text-lg font-bold text-[#0D1326] mb-2 font-['Space_Grotesk',sans-serif]">
+                {language === 'ar' ? item.categoryAr : item.category}
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {language === 'ar' ? item.descriptionAr : item.description}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* Action Link to Full Ecosystem Philosophy */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 sm:p-6 rounded-md bg-white border border-slate-200">
-          <div className="text-xs sm:text-sm text-slate-700">
+        {/* Vendor Integration Philosophy Callout */}
+        <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-600">
+          <div>
             <span className="font-bold text-[#0D1326]">
               {language === 'ar' ? 'فلسفة الشراكات والحيادية التقنية: ' : 'Vendor Integration Philosophy: '}
             </span>
@@ -123,14 +118,14 @@ export default function EcosystemSection() {
 
           <Link
             href="/partners"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:text-orange-700 shrink-0"
+            className="inline-flex items-center gap-1.5 font-bold text-orange-600 hover:text-orange-700 shrink-0 group"
           >
             <span>{language === 'ar' ? 'منهجية المنظومة التقنية' : 'View Integration Framework'}</span>
-            <ArrowIcon className="w-3.5 h-3.5" />
+            <ArrowIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
           </Link>
         </div>
+
       </div>
     </section>
   );
 }
-

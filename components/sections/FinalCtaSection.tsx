@@ -3,24 +3,37 @@
 import React from 'react';
 import { useLanguage } from '@/lib/i18n';
 import Button from '@/components/ui/Button';
-import SectionMarker from '@/components/ui/SectionMarker';
 
 export default function FinalCtaSection() {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-16 sm:py-28 bg-[#080D1A] text-slate-100 relative overflow-hidden border-t border-white/10 bg-grid-architectural">
-      {/* Restrained Accent Lighting */}
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-950/20 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-20 right-1/4 w-[400px] h-[200px] bg-orange-950/15 rounded-full blur-[90px] pointer-events-none" />
+    <section className="py-24 sm:py-36 bg-[#080D1A] text-slate-100 relative overflow-hidden border-t border-white/5">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+        
+        {/* UPT SIGNAL RESOLUTION */}
+        <div className="flex flex-col items-center mb-8">
+          {/* Arriving Vertical Signal Stem */}
+          <div className="w-0.5 h-16 bg-[#FF7A00]" />
+          
+          {/* Signal Termination Vector Arrow */}
+          <svg className="w-6 h-6 -mt-1 text-[#FF7A00]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M 12 3 L 5 11 M 12 3 L 19 11 M 12 3 L 12 21"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <SectionMarker
-          label={language === 'ar' ? 'ابدأ التخطيط المعماري' : 'ARCHITECTURAL ENGAGEMENT'}
-          variant="orange"
-          className="mb-5"
-        />
+          {/* Micro Engineering Notation */}
+          <span className="text-[10px] font-mono tracking-widest text-orange-400/80 uppercase mt-4">
+            UPT / RESOLUTION
+          </span>
+        </div>
 
+        {/* Section Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase leading-[1.1] font-['Space_Grotesk',sans-serif]">
           {language === 'ar' ? 'دعنا نصمم ونهندس ما هو قادم.' : "Let’s architect what’s next."}
         </h2>
@@ -42,13 +55,13 @@ export default function FinalCtaSection() {
         </div>
 
         {/* Engagement Model Assurance Note */}
-        <div className="mt-10 text-[11px] font-mono text-slate-500 uppercase tracking-wider">
+        <div className="mt-12 text-[10px] font-mono text-slate-600 uppercase tracking-wider">
           {language === 'ar'
-            ? 'جلسات استشارية معمارية • انضباط هندسي • توافق مع المعايير المؤسسية'
-            : 'ARCHITECTURAL CONSULTATION • ENGINEERING RIGOR • GOVERNED EXECUTION'}
+            ? 'UPT PLUS // الأمن السيبراني والحوسبة السحابية'
+            : 'UPT PLUS // CYBERSECURITY & CLOUD COMPUTING'}
         </div>
+
       </div>
     </section>
   );
 }
-

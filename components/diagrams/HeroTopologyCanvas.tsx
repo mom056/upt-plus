@@ -1,250 +1,120 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/lib/i18n';
-import { ShieldCheck, Cloud, Server, Lock, Cpu, Database, Activity } from 'lucide-react';
-
-interface TopologyNode {
-  id: string;
-  name: string;
-  nameAr: string;
-  role: string;
-  roleAr: string;
-  status: 'active' | 'hardened' | 'verified';
-  x: number; // percentage
-  y: number; // percentage
-  icon: any;
-  highlightColor: string;
-}
 
 export default function HeroTopologyCanvas() {
-  const { language, isRTL } = useLanguage();
-  const [activeNode, setActiveNode] = useState<TopologyNode | null>(null);
-  const [pulseIndex, setPulseIndex] = useState(0);
+  const { language } = useLanguage();
+  const [activeNode, setActiveNode] = useState<string>('security');
 
-  // Neutral conceptual architecture layers
-  const nodes: TopologyNode[] = [
-    {
-      id: 'edge',
-      name: 'Edge',
-      nameAr: 'الحافة الطرفية',
-      role: 'Global Routing & Delivery',
-      roleAr: 'توجيه وتسريع الوصول الطرفي',
-      status: 'active',
-      x: 14,
-      y: 48,
-      icon: Activity,
-      highlightColor: '#FF7A00',
-    },
-    {
-      id: 'security',
-      name: 'Security',
-      nameAr: 'الأمان والحماية',
-      role: 'Zero Trust & Access Control',
-      roleAr: 'سياسات الأمان وانعدام الثقة',
-      status: 'hardened',
-      x: 38,
-      y: 28,
-      icon: Lock,
-      highlightColor: '#6B21A8',
-    },
-    {
-      id: 'applications',
-      name: 'Applications & APIs',
-      nameAr: 'التطبيقات وواجهات البرمجة',
-      role: 'Core Workloads & Services',
-      roleAr: 'بيئات التشغيل والخدمات الرقمية',
-      status: 'verified',
-      x: 38,
-      y: 72,
-      icon: ShieldCheck,
-      highlightColor: '#FF7A00',
-    },
-    {
-      id: 'cloud',
-      name: 'Cloud',
-      nameAr: 'الحوسبة السحابية',
-      role: 'Hybrid & Elastic Compute',
-      roleAr: 'الحوسبة الهجينة والمرنة',
-      status: 'active',
-      x: 64,
-      y: 48,
-      icon: Cloud,
-      highlightColor: '#9333EA',
-    },
-    {
-      id: 'data',
-      name: 'Data',
-      nameAr: 'البيانات المؤسسية',
-      role: 'Protected Enterprise Storage',
-      roleAr: 'إدارة وتخزين البيانات المحمية',
-      status: 'hardened',
-      x: 86,
-      y: 28,
-      icon: Database,
-      highlightColor: '#6B21A8',
-    },
-    {
-      id: 'infrastructure',
-      name: 'Infrastructure',
-      nameAr: 'البنية التحتية',
-      role: 'Enterprise Digital Foundation',
-      roleAr: 'الأساس الرقمي والشبكي للمؤسسة',
-      status: 'verified',
-      x: 86,
-      y: 72,
-      icon: Server,
-      highlightColor: '#FF7A00',
-    },
+  const nodes = [
+    { id: 'edge', num: '01', name: 'Edge', nameAr: 'الحافة', x: 8, y: 45 },
+    { id: 'security', num: '02', name: 'Security', nameAr: 'الأمان السيبراني', isProtected: true, x: 36, y: 22 },
+    { id: 'apps', num: '03', name: 'Applications & APIs', nameAr: 'التطبيقات و APIs', x: 36, y: 72 },
+    { id: 'cloud', num: '04', name: 'Cloud', nameAr: 'الحوسبة السحابية', x: 60, y: 45 },
+    { id: 'data', num: '05', name: 'Data', nameAr: 'البيانات', x: 82, y: 22 },
+    { id: 'infra', num: '06', name: 'Infrastructure', nameAr: 'البنية التحتية', x: 82, y: 72 },
   ];
 
-  // Cycling data pulse animation (respects prefers-reduced-motion)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPulseIndex((prev) => (prev + 1) % 3);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative w-full aspect-[16/12] sm:aspect-[16/10] lg:aspect-[16/10] rounded-lg bg-[#0D1326] border border-white/15 p-3 sm:p-5 overflow-hidden shadow-2xl">
-      {/* Background Architectural Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(#F8FAFC 1px, transparent 1px), linear-gradient(90deg, #F8FAFC 1px, transparent 1px)`,
-          backgroundSize: '32px 32px',
-        }}
-      />
+    <div className="relative w-full aspect-[16/11] sm:aspect-[16/10]">
+      {/* Architectural Construction & Signal Vector */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        {/* Horizontal & Vertical Engineering Datum Rails */}
+        <line x1="0%" y1="45%" x2="100%" y2="45%" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="6 6" />
+        <line x1="36%" y1="0%" x2="36%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+        <line x1="60%" y1="0%" x2="60%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+        <line x1="82%" y1="0%" x2="82%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
 
-      {/* Subtle Purple & Orange Ambient Lighting */}
-      <div className="absolute -top-16 -left-16 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Passive Architectural Interconnects */}
+        <line x1="8%" y1="45%" x2="36%" y2="22%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="8%" y1="45%" x2="36%" y2="72%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="36%" y1="22%" x2="60%" y2="45%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="36%" y1="72%" x2="60%" y2="45%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="60%" y1="45%" x2="82%" y2="22%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="60%" y1="45%" x2="82%" y2="72%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
 
-      {/* Technical Header Bar */}
-      <div className="relative z-10 flex items-center justify-between pb-2.5 border-b border-white/10 text-[10px] sm:text-[11px] font-mono tracking-wider text-slate-400">
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
-          <span className="uppercase text-slate-200 font-bold truncate">
-            {language === 'ar' ? 'النسيج المعماري المؤسسي' : 'ENTERPRISE ARCHITECTURE TOPOLOGY'}
-          </span>
-        </div>
-        <div className="hidden sm:flex items-center gap-4 text-slate-400 text-[10px]">
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00]" />
-            {language === 'ar' ? 'مسار نشط' : 'Active Route'}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#9333EA]" />
-            {language === 'ar' ? 'نطاق الحماية السحابية' : 'Security Perimeter'}
-          </span>
-        </div>
-      </div>
+        {/* Security Protected Boundary (Subtle V-Shield Convergence Geometry) */}
+        <polygon
+          points="130,12 210,12 170,88"
+          fill="rgba(107,33,168,0.08)"
+          stroke="#9333EA"
+          strokeWidth="1.5"
+          strokeDasharray="4 3"
+          className="hidden sm:block"
+        />
 
-      {/* SVG Circuit & Vector Connection Paths */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        {/* Dynamic Connecting Lines */}
-        <line x1="14%" y1="48%" x2="38%" y2="28%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="14%" y1="48%" x2="38%" y2="72%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="38%" y1="28%" x2="64%" y2="48%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" />
-        <line x1="38%" y1="72%" x2="64%" y2="48%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" />
-        <line x1="64%" y1="48%" x2="86%" y2="28%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="64%" y1="48%" x2="86%" y2="72%" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="3 3" />
+        {/* THE UPT SIGNAL (Continuous Origin -> Routing -> Exit Datum) */}
+        <path
+          d="M 8% 45% L 36% 22% L 60% 45% L 82% 72% L 82% 100%"
+          fill="none"
+          stroke="#FF7A00"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
 
-        {/* Single Discrete Data Pulse */}
-        <circle cx={`${14 + (38 - 14) * (pulseIndex === 0 ? 0.6 : 0.2)}%`} cy={`${48 - (48 - 28) * (pulseIndex === 0 ? 0.6 : 0.2)}%`} r="3" fill="#FF7A00" opacity="0.9" />
-        <circle cx={`${38 + (64 - 38) * (pulseIndex === 1 ? 0.65 : 0.25)}%`} cy={`${28 + (48 - 28) * (pulseIndex === 1 ? 0.65 : 0.25)}%`} r="3" fill="#9333EA" opacity="0.9" />
-        <circle cx={`${64 + (86 - 64) * (pulseIndex === 2 ? 0.65 : 0.25)}%`} cy={`${48 - (48 - 28) * (pulseIndex === 2 ? 0.65 : 0.25)}%`} r="3" fill="#FF7A00" opacity="0.9" />
+        {/* Active Route Pulse Anchor */}
+        <circle cx="60%" cy="45%" r="3.5" fill="#FF7A00" />
+        
+        {/* Downward Signal Exit Cue at Datum (82%) */}
+        <circle cx="82%" cy="100%" r="3" fill="#FF7A00" />
       </svg>
 
-      {/* Interactive Topology Nodes */}
-      <div className="relative w-full h-[74%] z-10 mt-1">
+      {/* Open Architectural Node Labels (NO CARD BOXES) */}
+      <div className="relative w-full h-full">
         {nodes.map((node) => {
-          const isSelected = activeNode?.id === node.id;
-          const NodeIcon = node.icon;
+          const isSelected = activeNode === node.id;
 
           return (
-            <div
+            <button
               key={node.id}
+              type="button"
+              onClick={() => setActiveNode(node.id)}
               style={{
-                left: `${node.x}%`,
-                top: `${node.y}%`,
+                left: node.x + '%',
+                top: node.y + '%',
                 transform: 'translate(-50%, -50%)',
               }}
-              className="absolute group cursor-pointer"
-              onClick={() => setActiveNode(isSelected ? null : node)}
-              onMouseEnter={() => setActiveNode(node)}
+              className="absolute group focus:outline-none text-left rtl:text-right cursor-pointer"
             >
-              {/* Outer Glow Ring on Select */}
-              <div
-                className={`absolute -inset-1.5 sm:-inset-2 rounded-lg transition-all duration-200 pointer-events-none ${
-                  isSelected ? 'bg-orange-500/20 ring-1 ring-orange-400' : 'group-hover:bg-purple-900/30'
-                }`}
-              />
-
-              {/* Node Card Core */}
-              <div
-                className={`relative flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1 sm:py-2 rounded-md border transition-all duration-200 shadow-md ${
-                  isSelected
-                    ? 'bg-[#151D32] border-orange-500 text-white scale-105'
-                    : 'bg-[#11182B] border-white/15 text-slate-200 hover:border-purple-400/60'
-                }`}
-              >
-                <div
-                  className="w-5 h-5 sm:w-7 sm:h-7 rounded flex items-center justify-center shrink-0"
-                  style={{
-                    backgroundColor: node.highlightColor === '#FF7A00' ? 'rgba(255,122,0,0.15)' : 'rgba(107,33,168,0.25)',
-                    color: node.highlightColor,
-                  }}
-                >
-                  <NodeIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                </div>
-
-                <div className="text-left rtl:text-right">
-                  <div className="text-[10px] sm:text-xs font-bold text-slate-100 whitespace-nowrap">
+              <div className="flex items-center gap-2">
+                <span
+                  className={'w-2.5 h-2.5 rounded-full transition-transform duration-200 ' +
+                    (isSelected
+                      ? 'bg-[#FF7A00] ring-4 ring-orange-500/20 scale-125'
+                      : node.isProtected
+                      ? 'bg-purple-500 ring-2 ring-purple-500/20 group-hover:scale-110'
+                      : 'bg-slate-400 group-hover:scale-110')}
+                />
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-mono text-slate-500 leading-none">
+                    {node.num}
+                  </span>
+                  <span
+                    className={'text-xs font-mono font-bold tracking-wider uppercase transition-colors ' +
+                      (isSelected
+                        ? 'text-orange-400'
+                        : node.isProtected
+                        ? 'text-purple-300 group-hover:text-white'
+                        : 'text-slate-300 group-hover:text-white')}
+                  >
                     {language === 'ar' ? node.nameAr : node.name}
-                  </div>
-                  <div className="text-[9px] text-slate-400 font-mono whitespace-nowrap hidden sm:block">
-                    {language === 'ar' ? node.roleAr : node.role}
-                  </div>
+                  </span>
                 </div>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
 
-      {/* Architecture Detail Panel */}
-      <div className="relative z-10 mt-auto pt-2 border-t border-white/10 flex items-center justify-between text-xs text-slate-300 bg-[#0B1020]/90 px-2.5 py-1.5 rounded">
-        {activeNode ? (
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 truncate">
-              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: activeNode.highlightColor }} />
-              <span className="font-bold text-white text-xs shrink-0">
-                {language === 'ar' ? activeNode.nameAr : activeNode.name}:
-              </span>
-              <span className="text-slate-300 text-[10px] sm:text-[11px] truncate">
-                {language === 'ar' ? activeNode.roleAr : activeNode.role}
-              </span>
-            </div>
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase text-emerald-400 bg-emerald-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800/40 shrink-0 ms-2">
-              {language === 'ar' ? 'طبقة محصنة' : 'Hardened Layer'}
-            </span>
-          </div>
-        ) : (
-          <div className="flex items-center justify-between w-full text-slate-400 text-[10px] sm:text-[11px]">
-            <span className="truncate">
-              {language === 'ar'
-                ? 'حدد أي طبقة معمارية لاستعراض موقعها ودورها'
-                : 'Select any architectural layer to inspect its placement'}
-            </span>
-            <span className="font-mono text-slate-500 uppercase text-[9px] hidden md:inline shrink-0 ms-2">
-              Control Plane Architecture
-            </span>
-          </div>
-        )}
+      {/* Clean Bottom Field Datum Line & Label */}
+      <div className="absolute bottom-0 left-0 right-0 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-500">
+        <span className="uppercase">UPT CONTROL PLANE</span>
+        <span className="text-orange-400 uppercase tracking-wider">
+          {language === 'ar' ? 'مسار الإشارة' : 'ACTIVE ROUTE'}
+        </span>
       </div>
     </div>
   );
 }
-

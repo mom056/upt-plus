@@ -3,19 +3,21 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/i18n';
-import SectionHeader from '@/components/ui/SectionHeader';
-import { ShieldCheck, CloudCog, Server, CheckCircle2, Layers, ArrowRight, ArrowLeft } from 'lucide-react';
+import SectionMarker from '@/components/ui/SectionMarker';
 import Button from '@/components/ui/Button';
+import { CheckCircle2, ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function CapabilitiesSection() {
   const { language, isRTL } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>('cybersecurity');
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+  const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
 
   const corePillars = [
     {
       id: 'cybersecurity',
       num: '01',
+      posture: 'BOUNDARY',
+      postureAr: 'سياج الحماية',
       title: 'Cybersecurity',
       titleAr: 'الأمن السيبراني',
       tagline: 'Defensive Architecture & Zero Trust',
@@ -26,7 +28,6 @@ export default function CapabilitiesSection() {
         'Full-lifecycle cybersecurity architectures engineered for resilient digital operations — embedding Zero Trust, identity-aware controls, API defense, and proactive telemetry directly into your cloud and infrastructure fabric.',
       overviewAr:
         'بنيات أمنية متكاملة ومصممة لدعم العمليات الرقمية الصامدة — عبر تضمين مبادئ انعدام الثقة (Zero Trust)، وضوابط الهوية، وحماية واجهات التطبيقات، والمراقبة الاستباقية مباشرة في النسيج السحابي والفيزيائي.',
-      icon: ShieldCheck,
       capabilities: [
         {
           name: 'Application & API Defense',
@@ -61,6 +62,8 @@ export default function CapabilitiesSection() {
     {
       id: 'cloud',
       num: '02',
+      posture: 'DISTRIBUTION',
+      postureAr: 'التوزيع المتوازن',
       title: 'Cloud Computing',
       titleAr: 'الحوسبة السحابية',
       tagline: 'Distributed Fabric & High Availability',
@@ -71,7 +74,6 @@ export default function CapabilitiesSection() {
         'Resilient, decoupled, and cost-effective digital operating foundations — from foundational multi-zone cloud architecture and structured migration to hybrid connectivity and container orchestration.',
       overviewAr:
         'تصميم أنظمة تشغيل رقمية مرنة وموزعة وعالية الفعالية — من المعمارية متعددة المناطق والترحيل المدروس، إلى الربط الهجين، إدارة الحاويات، والتحسين المستمر للأداء.',
-      icon: CloudCog,
       capabilities: [
         {
           name: 'Enterprise Cloud Architecture',
@@ -106,6 +108,8 @@ export default function CapabilitiesSection() {
     {
       id: 'infrastructure',
       num: '03',
+      posture: 'BACKBONE',
+      postureAr: 'العمود الفقري',
       title: 'Digital Infrastructure',
       titleAr: 'البنية التحتية الرقمية',
       tagline: 'Enterprise Physical & Network Foundation',
@@ -116,7 +120,6 @@ export default function CapabilitiesSection() {
         'Supporting enterprise foundation — encompassing high-performance campus networking, structured cabling, optical fiber backbones, and datacenter connectivity enabling your cloud and security environments.',
       overviewAr:
         'الركيزة الأساسية الداعمة — تشمل شبكات المقار عالية الأداء، شبكات الكوابل الهيكلية، شبكات الألياف الضوئية، وربط مراكز البيانات لتمكين البيئات السحابية والأمنية.',
-      icon: Server,
       capabilities: [
         {
           name: 'Enterprise Campus & Core Networking',
@@ -153,139 +156,199 @@ export default function CapabilitiesSection() {
   const activePillar = corePillars.find((p) => p.id === activeTab) || corePillars[0];
 
   return (
-    <section className="py-14 sm:py-24 bg-[#080D1A] text-slate-100 border-b border-white/10 relative bg-grid-architectural">
+    <section className="py-20 sm:py-28 bg-[#080D1A] text-slate-100 border-b border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          sectionNumber="02"
-          eyebrow={language === 'ar' ? 'مجالات العمل والقدرات' : 'WHAT WE DO'}
-          title={
-            language === 'ar'
-              ? 'الأمن السيبراني والحوسبة السحابية للمؤسسات'
-              : 'Cybersecurity & Cloud Computing for Modern Enterprise'
-          }
-          subtitle={
-            language === 'ar'
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <SectionMarker
+            number="02"
+            label={language === 'ar' ? 'مجالات العمل والقدرات' : 'WHAT WE DO'}
+            variant="orange"
+            className="mb-4"
+          />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-['Space_Grotesk',sans-serif] tracking-tight uppercase">
+            {language === 'ar'
+              ? 'الأمن السيبراني والحوسبة السحابية للمؤسسات.'
+              : 'Cybersecurity & Cloud Computing for Modern Enterprise.'}
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+            {language === 'ar'
               ? 'نركز على هندسة الأمن السيبراني والحوسبة السحابية كركيزتين أساسيتين، مدعومتين ببنية تحتية رقمية متينة لضمان الصمود التشغيلي.'
-              : 'Focused architectural engineering centered on Cybersecurity and Cloud Computing, supported by resilient Digital Infrastructure.'
-          }
-          align="split"
-          badgeVariant="orange"
-        />
-
-        {/* 3 Primary Rails */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-8">
-          {corePillars.map((pillar) => {
-            const isSelected = activeTab === pillar.id;
-            const Icon = pillar.icon;
-
-            return (
-              <button
-                key={pillar.id}
-                type="button"
-                onClick={() => setActiveTab(pillar.id)}
-                className={`p-4 rounded-md border text-left rtl:text-right transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
-                  isSelected
-                    ? 'bg-[#151D32] border-orange-500 shadow-md text-white'
-                    : 'bg-[#0D1326] border-white/10 text-slate-400 hover:border-purple-400/50 hover:bg-[#11182B] hover:text-slate-200'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`font-mono text-xs font-bold ${isSelected ? 'text-orange-400' : 'text-slate-500'}`}>
-                    {pillar.num}
-                  </span>
-                  <div
-                    className={`w-7 h-7 rounded flex items-center justify-center transition-colors ${
-                      isSelected ? 'bg-orange-500/20 text-orange-400' : 'bg-white/5 text-slate-400'
-                    }`}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </div>
-                </div>
-
-                <div className="text-sm font-bold text-slate-100 mb-1 truncate">
-                  {language === 'ar' ? pillar.titleAr : pillar.title}
-                </div>
-
-                <div className="text-[11px] font-mono text-slate-400 truncate">
-                  {language === 'ar' ? pillar.taglineAr : pillar.tagline}
-                </div>
-              </button>
-            );
-          })}
+              : 'Focused architectural engineering centered on Cybersecurity and Cloud Computing, supported by resilient Digital Infrastructure.'}
+          </p>
         </div>
 
-        {/* Active Capability Deep-Dive Showcase */}
-        <div className="bg-[#0D1326] border border-white/15 rounded-lg p-6 sm:p-9 shadow-2xl relative overflow-hidden">
-          <div className="relative z-10">
-            {/* Pillar Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-6 border-b border-white/10">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold text-slate-500">{activePillar.num}</span>
-                  <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest">
-                    {language === 'ar' ? activePillar.taglineAr : activePillar.tagline}
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white mt-1 font-['Space_Grotesk',sans-serif]">
-                  {language === 'ar' ? activePillar.headlineAr : activePillar.headline}
-                </h3>
+        {/* 2-Column Architectural Layout: Left Selection + Right Dynamic Blueprint Canvas */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: 3 Architectural Posture Selectors */}
+          <div className="lg:col-span-5 space-y-8">
+            {corePillars.map((pillar) => {
+              const isSelected = activeTab === pillar.id;
+
+              return (
+                <button
+                  key={pillar.id}
+                  id={'tab-' + pillar.id}
+                  type="button"
+                  onClick={() => setActiveTab(pillar.id)}
+                  className="w-full text-left rtl:text-right focus:outline-none group cursor-pointer pb-6 border-b border-white/5"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className={'text-[10px] font-mono tracking-widest uppercase ' +
+                      (isSelected ? 'text-orange-400 font-bold' : 'text-slate-500')}>
+                      {pillar.num} • {language === 'ar' ? pillar.postureAr : pillar.posture}
+                    </span>
+                    {isSelected && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00]" />
+                    )}
+                  </div>
+
+                  <h3 className={'text-xl sm:text-2xl font-bold font-["Space_Grotesk",sans-serif] transition-colors ' +
+                    (isSelected ? 'text-white' : 'text-slate-400 group-hover:text-slate-200')}>
+                    {language === 'ar' ? pillar.titleAr : pillar.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    {language === 'ar' ? pillar.taglineAr : pillar.tagline}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Column: Open Architectural Schematic (No Card Frame) */}
+          <div className="lg:col-span-7 flex flex-col">
+            
+            {/* Architectural Canvas */}
+            <div className="w-full aspect-[16/9] relative mb-6">
+              {/* Construction Datum Lines */}
+              <div className="absolute inset-0 flex items-center justify-between border-t border-b border-white/5 text-[9px] font-mono text-slate-600 px-2 pointer-events-none">
+                <span>{activePillar.num} • {activePillar.posture}</span>
+                <span className="text-orange-400/80">ARCHITECTURAL SCHEMATIC</span>
               </div>
 
-              <Button href="/solutions" variant="outline" size="sm" withArrow className="shrink-0">
-                {language === 'ar' ? 'استعراض صفحة الحلول' : 'View Full Solutions'}
-              </Button>
+              <svg className="w-full h-full" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Horizontal Datum Alignment Line */}
+                <line x1="10" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
+
+                {/* POSTURE 01: BOUNDARY (CYBERSECURITY) */}
+                {activeTab === 'cybersecurity' && (
+                  <g className="transition-opacity duration-300">
+                    {/* Protected V-Shield Boundary Geometry */}
+                    <polygon
+                      points="240,40 310,40 280,140 230,140"
+                      fill="rgba(107,33,168,0.12)"
+                      stroke="#9333EA"
+                      strokeWidth="1.5"
+                      strokeDasharray="4 3"
+                    />
+                    <line x1="235" y1="75" x2="235" y2="105" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="30" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="235" cy="90" r="4" fill="#FF7A00" />
+                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
+                  </g>
+                )}
+
+                {/* POSTURE 02: DISTRIBUTION (CLOUD COMPUTING) - 1 in -> 3 distributed -> 1 out */}
+                {activeTab === 'cloud' && (
+                  <g className="transition-opacity duration-300">
+                    {/* 1 Incoming Route */}
+                    <line x1="30" y1="90" x2="130" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="130" cy="90" r="4" fill="#FF7A00" />
+
+                    {/* Symmetrical 3-Way Distribution Paths */}
+                    <path d="M 130 90 L 170 45 L 280 45 L 320 90" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                    <line x1="130" y1="90" x2="320" y2="90" stroke="#FF7A00" strokeWidth="2" />
+                    <path d="M 130 90 L 170 135 L 280 135 L 320 90" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+
+                    <circle cx="225" cy="45" r="3.5" fill="#FF7A00" />
+                    <circle cx="225" cy="90" r="3.5" fill="#FF7A00" />
+                    <circle cx="225" cy="135" r="3.5" fill="#FF7A00" />
+
+                    {/* 1 Resolved Outgoing Route */}
+                    <circle cx="320" cy="90" r="4" fill="#FF7A00" />
+                    <line x1="320" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
+                  </g>
+                )}
+
+                {/* POSTURE 03: BACKBONE (DIGITAL INFRASTRUCTURE) */}
+                {activeTab === 'infrastructure' && (
+                  <g className="transition-opacity duration-300">
+                    <line x1="30" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
+                    
+                    {/* Vertical Stanchion Cross-Ties */}
+                    <line x1="120" y1="50" x2="120" y2="130" stroke="#64748B" strokeWidth="1.5" />
+                    <line x1="210" y1="50" x2="210" y2="130" stroke="#64748B" strokeWidth="1.5" />
+                    <line x1="300" y1="50" x2="300" y2="130" stroke="#64748B" strokeWidth="1.5" />
+
+                    <circle cx="120" cy="90" r="3.5" fill="#FF7A00" />
+                    <circle cx="210" cy="90" r="3.5" fill="#FF7A00" />
+                    <circle cx="300" cy="90" r="3.5" fill="#FF7A00" />
+                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
+                  </g>
+                )}
+              </svg>
+
+              {/* Bottom Fabric Datum */}
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between text-[9px] font-mono text-slate-600 px-2 pointer-events-none">
+                <span>{activePillar.posture} POSTURE</span>
+                <span>UPT PLUS FABRIC</span>
+              </div>
             </div>
 
-            {/* Overview & Strategic Outcomes */}
-            <div className="mt-7 grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="lg:col-span-7 space-y-4">
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {language === 'ar' ? activePillar.overviewAr : activePillar.overview}
-                </p>
+            {/* Active Pillar Detailed Capabilities & Strategic Value (Open Editorial Layout) */}
+            <div className="pt-6 border-t border-white/5">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  {language === 'ar' ? activePillar.headlineAr : activePillar.headline}
+                </h4>
+                <Button href={'/solutions#' + activePillar.id} variant="outline" size="sm" withArrow className="shrink-0 hidden sm:inline-flex">
+                  {language === 'ar' ? 'استعراض الحلول' : 'View Solutions'}
+                </Button>
+              </div>
 
-                {/* Capabilities grid */}
-                <div className="space-y-2.5 pt-2">
-                  {activePillar.capabilities.map((cap) => (
-                    <div key={cap.name} className="p-3 rounded bg-[#11182B] border border-white/10 text-xs">
-                      <div className="font-bold text-white mb-0.5">
-                        {language === 'ar' ? cap.nameAr : cap.name}
-                      </div>
-                      <div className="text-slate-400 leading-relaxed">
-                        {language === 'ar' ? cap.descAr : cap.desc}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                {language === 'ar' ? activePillar.overviewAr : activePillar.overview}
+              </p>
+
+              {/* Specific Sub-Capabilities Strip */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 pt-4 border-t border-white/5">
+                {activePillar.capabilities.map((cap) => (
+                  <div key={cap.name} className="flex flex-col">
+                    <span className="text-xs font-bold text-slate-200 mb-1">
+                      {language === 'ar' ? cap.nameAr : cap.name}
+                    </span>
+                    <span className="text-[11px] text-slate-400 leading-snug">
+                      {language === 'ar' ? cap.descAr : cap.desc}
+                    </span>
+                  </div>
+                ))}
               </div>
 
               {/* Strategic Value Outcomes */}
-              <div className="lg:col-span-5 bg-[#11182B] p-5 rounded-md border border-white/10 flex flex-col justify-between">
-                <div>
-                  <div className="text-xs font-mono uppercase text-slate-400 tracking-wider font-bold mb-3">
-                    {language === 'ar' ? 'الأثر الاستراتيجي للمؤسسة:' : 'Strategic Enterprise Value:'}
-                  </div>
-                  <ul className="space-y-2.5">
-                    {(language === 'ar' ? activePillar.outcomesAr : activePillar.outcomes).map((val, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs text-slate-200">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{val}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-300">
+                <div className="space-y-1.5">
+                  {(language === 'ar' ? activePillar.outcomesAr : activePillar.outcomes).map((val, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-slate-300 text-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00] shrink-0" />
+                      <span>{val}</span>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-white/10">
-                  <Button href="/contact" variant="primary" size="sm" withArrow className="w-full justify-center">
-                    {language === 'ar' ? 'استشر مهندسينا' : 'Consult Our Architects'}
-                  </Button>
-                </div>
+                <Button href="/contact" variant="primary" size="sm" withArrow className="shrink-0">
+                  {language === 'ar' ? 'استشر مهندسينا' : 'Consult Our Architects'}
+                </Button>
               </div>
             </div>
+
           </div>
+
         </div>
+
       </div>
     </section>
   );
 }
-
-
