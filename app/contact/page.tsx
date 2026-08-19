@@ -11,8 +11,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   AlertCircle,
-  Clock,
-  HelpCircle,
 } from 'lucide-react';
 
 export default function ContactPage() {
@@ -47,7 +45,7 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setSubmissionStatus(null);
 
-    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const fullName = (formData.firstName + ' ' + formData.lastName).trim();
 
     try {
       const res = await fetch('/api/contact', {
@@ -100,48 +98,60 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#080D1A] text-slate-100 pt-28 pb-24 bg-grid-architectural">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#080D1A] text-slate-100 pt-24 sm:pt-32 pb-24 relative overflow-hidden">
+      {/* Construction Grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #FFFFFF 1px, transparent 1px), linear-gradient(to bottom, #FFFFFF 1px, transparent 1px)',
+          backgroundSize: '96px 96px',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Breadcrumbs items={[{ label: language === 'ar' ? 'تواصل معنا' : 'Contact' }]} />
 
         {/* Hero Header */}
-        <div className="max-w-4xl mt-6 mb-16">
+        <div className="max-w-4xl mt-6 mb-12 sm:mb-16">
           <SectionMarker
             number="01"
             label={language === 'ar' ? 'التواصل والاستفسارات' : 'CONTACT & ENGAGEMENT'}
             variant="orange"
             className="mb-4"
           />
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-['Space_Grotesk',sans-serif] leading-[1.08]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-['Space_Grotesk',sans-serif] leading-[1.08] uppercase">
             {language === 'ar' ? 'تواصل مع فريق UPT PLUS.' : 'Connect with UPT Plus.'}
           </h1>
-          <p className="mt-5 text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
             {language === 'ar'
               ? 'سواء كنت تخطط لترحيل سحابي، تعزيز أمان البنية التقنية، أو بناء بنية تحتية رقمية متينة، فريقنا مستعد لمناقشة أهدافك التقنية.'
               : 'Whether you are planning a cloud migration, evaluating your security architecture, or building resilient infrastructure, our team is ready to assist.'}
           </p>
         </div>
 
-        {/* 2-Column Layout: Contact Form & Info Aside */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-          {/* Form Container (8 Cols) */}
-          <div className="lg:col-span-8 bg-[#0D1326] border border-white/15 rounded-md p-6 sm:p-10 shadow-2xl">
-            <h2 className="text-xl sm:text-2xl font-bold text-white font-['Space_Grotesk',sans-serif] mb-1">
-              {language === 'ar' ? 'إرسال استفسار' : 'Submit an Inquiry'}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mb-6">
-              {language === 'ar'
-                ? 'يرجى تزويدنا بالمعلومات الأساسية وسيتم التواصل معكم من قبل الفريق المختص.'
-                : 'Please provide your contact information and brief project scope.'}
-            </p>
+        {/* Open 2-Column Functional Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 pt-8 border-t border-white/10">
+          
+          {/* Form Column (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            <div>
+              <h2 className="text-2xl font-bold text-white font-['Space_Grotesk',sans-serif] mb-1">
+                {language === 'ar' ? 'إرسال استفسار معماري' : 'Submit an Inquiry'}
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-400">
+                {language === 'ar'
+                  ? 'يرجى تزويدنا بالمعلومات الأساسية وسيتم التواصل معكم من قبل الفريق المختص.'
+                  : 'Please provide your contact information and brief project scope.'}
+              </p>
+            </div>
 
             {submissionStatus && (
               <div
-                className={`p-4 rounded mb-6 flex items-start gap-3 border ${
-                  submissionStatus.success
+                className={'p-4 rounded mb-6 flex items-start gap-3 border ' +
+                  (submissionStatus.success
                     ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                    : 'bg-red-500/10 border-red-500/30 text-red-300'
-                }`}
+                    : 'bg-red-500/10 border-red-500/30 text-red-300')}
               >
                 {submissionStatus.success ? (
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
@@ -174,7 +184,7 @@ export default function ContactPage() {
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     placeholder={language === 'ar' ? 'محمد' : 'Jane'}
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   />
                 </div>
 
@@ -190,7 +200,7 @@ export default function ContactPage() {
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     placeholder={language === 'ar' ? 'العتيبي' : 'Doe'}
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   />
                 </div>
               </div>
@@ -208,7 +218,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   />
                 </div>
 
@@ -224,7 +234,7 @@ export default function ContactPage() {
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                     placeholder={language === 'ar' ? 'اسم الشركة' : 'Company Name'}
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   />
                 </div>
               </div>
@@ -241,7 +251,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+966 ..."
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   />
                 </div>
 
@@ -254,10 +264,10 @@ export default function ContactPage() {
                     id="areaOfInterest"
                     value={formData.areaOfInterest}
                     onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                   >
                     {interestOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value} className="bg-[#0D1326] text-white">
+                      <option key={opt.value} value={opt.value} className="bg-[#080D1A] text-white">
                         {language === 'ar' ? opt.labelAr : opt.label}
                       </option>
                     ))}
@@ -281,7 +291,7 @@ export default function ContactPage() {
                       ? 'يرجى تقديم نبذة عن متطلباتكم التقنية وأهداف المشروع...'
                       : 'Please provide a summary of your requirements, current environment, and project scope...'
                   }
-                  className="w-full px-3.5 py-2.5 rounded bg-[#11182B] border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded bg-white/[0.03] border border-white/15 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 text-xs sm:text-sm transition-colors"
                 />
               </div>
 
@@ -293,23 +303,25 @@ export default function ContactPage() {
             </form>
           </div>
 
-          {/* Aside Information (4 Cols) */}
-          <div className="lg:col-span-4 space-y-5">
-            {/* Direct Inquiries Card */}
-            <div className="bg-[#0D1326] border border-white/15 rounded-md p-6 shadow-xl">
-              <h3 className="text-base font-bold text-white font-['Space_Grotesk',sans-serif] mb-4">
-                {language === 'ar' ? 'قنوات التواصل المباشر' : 'Direct Channels'}
+          {/* Aside Information (5 Cols) */}
+          <div className="lg:col-span-5 space-y-8 border-t lg:border-t-0 lg:border-l rtl:lg:border-r rtl:lg:border-l-0 border-white/10 pt-8 lg:pt-0 lg:ps-12 rtl:lg:pe-12">
+            <div>
+              <div className="text-xs font-mono uppercase text-orange-400 font-bold tracking-wider mb-2">
+                {language === 'ar' ? 'قنوات التواصل المباشر' : 'DIRECT CHANNELS'}
+              </div>
+              <h3 className="text-xl font-bold text-white font-['Space_Grotesk',sans-serif] mb-6">
+                {language === 'ar' ? 'اتصال مباشر مع الفريق الهندسي' : 'Direct Engineering Inquiries'}
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 shrink-0">
+                  <div className="w-8 h-8 rounded bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 shrink-0 mt-0.5">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-slate-400">General Inquiries:</div>
+                    <div className="text-[11px] font-mono text-slate-400 uppercase">General Inquiries:</div>
                     <a
-                      href={`mailto:${BRAND_CONFIG.placeholders.contactEmail}`}
+                      href={'mailto:' + BRAND_CONFIG.placeholders.contactEmail}
                       className="text-xs sm:text-sm font-semibold text-white hover:text-orange-400 transition-colors"
                     >
                       {BRAND_CONFIG.placeholders.contactEmail}
@@ -318,13 +330,13 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                  <div className="w-8 h-8 rounded bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-slate-400">Security Inquiries:</div>
+                    <div className="text-[11px] font-mono text-slate-400 uppercase">Security Inquiries:</div>
                     <a
-                      href={`mailto:${BRAND_CONFIG.placeholders.securityEmail}`}
+                      href={'mailto:' + BRAND_CONFIG.placeholders.securityEmail}
                       className="text-xs sm:text-sm font-semibold text-white hover:text-purple-400 transition-colors"
                     >
                       {BRAND_CONFIG.placeholders.securityEmail}
@@ -334,21 +346,26 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Engagement Approach Card */}
-            <div className="bg-[#0D1326] border border-white/15 rounded-md p-6">
-              <h3 className="text-sm font-bold text-white mb-2 font-['Space_Grotesk',sans-serif]">
-                {language === 'ar' ? 'نهج التعامل' : 'Our Engagement Approach'}
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
+            <div className="pt-6 border-t border-white/10">
+              <h4 className="text-xs font-mono uppercase text-slate-400 font-bold mb-2">
+                {language === 'ar' ? 'نهج التعامل والسرية' : 'OUR ENGAGEMENT APPROACH'}
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 {language === 'ar'
                   ? 'يتم التعامل مع كافة الاستفسارات والبيانات الفنية باحترافية وسرية تامة من قبل المختصين لدينا.'
-                  : 'All inquiries and shared technical specifications are handled with professional discretion and care.'}
+                  : 'All inquiries and shared technical specifications are handled with professional discretion, strict privacy, and architectural care.'}
               </p>
             </div>
+
+            <div className="pt-6 border-t border-white/10 flex items-center gap-3 text-[11px] font-mono text-slate-500">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A00]" />
+              <span>UPT PLUS — ENGAGEMENT GATEWAY</span>
+            </div>
           </div>
+
         </div>
+
       </div>
     </main>
   );
 }
-
