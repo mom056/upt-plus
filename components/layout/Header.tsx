@@ -36,10 +36,12 @@ export default function Header() {
     setLanguage(language === 'en' ? 'ar' : 'en');
   };
 
+  const isLightPage = pathname === '/partners';
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isLightPage
           ? 'bg-[#080D1A]/95 backdrop-blur-md border-b border-white/10 shadow-md py-3'
           : 'bg-transparent border-b border-white/5 py-4'
       }`}

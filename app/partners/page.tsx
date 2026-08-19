@@ -92,7 +92,7 @@ export default function EcosystemPage() {
   return (
     <main className="min-h-screen bg-[#F7F8FA] text-[#101827] pt-24 sm:pt-32 pb-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <Breadcrumbs items={[{ label: language === 'ar' ? 'المنظومة التقنية' : 'Technology Ecosystem' }]} />
+        <Breadcrumbs items={[{ label: language === 'ar' ? 'المنظومة التقنية' : 'Technology Ecosystem' }]} isLight={true} />
 
         {/* Hero Header */}
         <div className="max-w-4xl mt-6 mb-16 sm:mb-20">
