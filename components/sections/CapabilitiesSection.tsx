@@ -1,16 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { useLanguage } from '@/lib/i18n';
 import SectionMarker from '@/components/ui/SectionMarker';
 import Button from '@/components/ui/Button';
-import { CheckCircle2, ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function CapabilitiesSection() {
-  const { language, isRTL } = useLanguage();
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>('cybersecurity');
-  const ArrowIcon = isRTL ? ChevronLeft : ChevronRight;
 
   const corePillars = [
     {
@@ -179,7 +176,7 @@ export default function CapabilitiesSection() {
           </p>
         </div>
 
-        {/* 2-Column Architectural Layout: Left Selection + Right Dynamic Blueprint Canvas */}
+        {/* 2-Column Architectural Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: 3 Architectural Posture Selectors */}
@@ -218,88 +215,86 @@ export default function CapabilitiesSection() {
             })}
           </div>
 
-          {/* Right Column: Open Architectural Schematic (No Card Frame) */}
+          {/* Right Column: Open Architectural Schematic */}
           <div className="lg:col-span-7 flex flex-col">
             
-            {/* Architectural Canvas */}
+            {/* Dedicated Architectural Canvas */}
             <div className="w-full aspect-[16/9] relative mb-6">
-              {/* Construction Datum Lines */}
-              <div className="absolute inset-0 flex items-center justify-between border-t border-b border-white/5 text-[9px] font-mono text-slate-600 px-2 pointer-events-none">
-                <span>{activePillar.num} • {activePillar.posture}</span>
+              {/* Top Datum Indicator */}
+              <div className="flex items-center justify-between pb-2 border-b border-white/5 text-[9px] font-mono text-slate-500 uppercase">
+                <span>{activePillar.num} • {language === 'ar' ? activePillar.postureAr : activePillar.posture}</span>
                 <span className="text-orange-400/80">ARCHITECTURAL SCHEMATIC</span>
               </div>
 
-              <svg className="w-full h-full" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Horizontal Datum Alignment Line */}
-                <line x1="10" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
+              {/* Vector Blueprint Graphic */}
+              <div className="w-full h-[calc(100%-40px)] relative">
+                <svg className="w-full h-full" viewBox="0 0 400 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Construction Datum Line */}
+                  <line x1="10" y1="70" x2="390" y2="70" stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
 
-                {/* POSTURE 01: BOUNDARY (CYBERSECURITY) */}
-                {activeTab === 'cybersecurity' && (
-                  <g className="transition-opacity duration-300">
-                    {/* Protected V-Shield Boundary Geometry */}
-                    <polygon
-                      points="240,40 310,40 280,140 230,140"
-                      fill="rgba(107,33,168,0.12)"
-                      stroke="#9333EA"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 3"
-                    />
-                    <line x1="235" y1="75" x2="235" y2="105" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
-                    <line x1="30" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="235" cy="90" r="4" fill="#FF7A00" />
-                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
-                  </g>
-                )}
+                  {/* POSTURE 01: BOUNDARY (CYBERSECURITY) */}
+                  {activeTab === 'cybersecurity' && (
+                    <g className="transition-opacity duration-300">
+                      <polygon
+                        points="240,20 310,20 280,120 230,120"
+                        fill="rgba(107,33,168,0.12)"
+                        stroke="#9333EA"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 3"
+                      />
+                      <line x1="235" y1="55" x2="235" y2="85" stroke="#C084FC" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="30" y1="70" x2="370" y2="70" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                      <circle cx="235" cy="70" r="4" fill="#FF7A00" />
+                      <circle cx="370" cy="70" r="3" fill="#FF7A00" />
+                    </g>
+                  )}
 
-                {/* POSTURE 02: DISTRIBUTION (CLOUD COMPUTING) - 1 in -> 3 distributed -> 1 out */}
-                {activeTab === 'cloud' && (
-                  <g className="transition-opacity duration-300">
-                    {/* 1 Incoming Route */}
-                    <line x1="30" y1="90" x2="130" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="130" cy="90" r="4" fill="#FF7A00" />
+                  {/* POSTURE 02: DISTRIBUTION (CLOUD COMPUTING) */}
+                  {activeTab === 'cloud' && (
+                    <g className="transition-opacity duration-300">
+                      <line x1="30" y1="70" x2="130" y2="70" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                      <circle cx="130" cy="70" r="4" fill="#FF7A00" />
 
-                    {/* Symmetrical 3-Way Distribution Paths */}
-                    <path d="M 130 90 L 170 45 L 280 45 L 320 90" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
-                    <line x1="130" y1="90" x2="320" y2="90" stroke="#FF7A00" strokeWidth="2" />
-                    <path d="M 130 90 L 170 135 L 280 135 L 320 90" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                      <path d="M 130 70 L 170 30 L 280 30 L 320 70" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
+                      <line x1="130" y1="70" x2="320" y2="70" stroke="#FF7A00" strokeWidth="2" />
+                      <path d="M 130 70 L 170 110 L 280 110 L 320 70" stroke="#FF7A00" strokeWidth="2" strokeLinejoin="round" />
 
-                    <circle cx="225" cy="45" r="3.5" fill="#FF7A00" />
-                    <circle cx="225" cy="90" r="3.5" fill="#FF7A00" />
-                    <circle cx="225" cy="135" r="3.5" fill="#FF7A00" />
+                      <circle cx="225" cy="30" r="3.5" fill="#FF7A00" />
+                      <circle cx="225" cy="70" r="3.5" fill="#FF7A00" />
+                      <circle cx="225" cy="110" r="3.5" fill="#FF7A00" />
 
-                    {/* 1 Resolved Outgoing Route */}
-                    <circle cx="320" cy="90" r="4" fill="#FF7A00" />
-                    <line x1="320" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
-                  </g>
-                )}
+                      <circle cx="320" cy="70" r="4" fill="#FF7A00" />
+                      <line x1="320" y1="70" x2="370" y2="70" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                      <circle cx="370" cy="70" r="3" fill="#FF7A00" />
+                    </g>
+                  )}
 
-                {/* POSTURE 03: BACKBONE (DIGITAL INFRASTRUCTURE) */}
-                {activeTab === 'infrastructure' && (
-                  <g className="transition-opacity duration-300">
-                    <line x1="30" y1="90" x2="370" y2="90" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
-                    
-                    {/* Vertical Stanchion Cross-Ties */}
-                    <line x1="120" y1="50" x2="120" y2="130" stroke="#64748B" strokeWidth="1.5" />
-                    <line x1="210" y1="50" x2="210" y2="130" stroke="#64748B" strokeWidth="1.5" />
-                    <line x1="300" y1="50" x2="300" y2="130" stroke="#64748B" strokeWidth="1.5" />
+                  {/* POSTURE 03: BACKBONE (DIGITAL INFRASTRUCTURE) */}
+                  {activeTab === 'infrastructure' && (
+                    <g className="transition-opacity duration-300">
+                      <line x1="30" y1="70" x2="370" y2="70" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
+                      
+                      <line x1="120" y1="35" x2="120" y2="105" stroke="#64748B" strokeWidth="1.5" />
+                      <line x1="210" y1="35" x2="210" y2="105" stroke="#64748B" strokeWidth="1.5" />
+                      <line x1="300" y1="35" x2="300" y2="105" stroke="#64748B" strokeWidth="1.5" />
 
-                    <circle cx="120" cy="90" r="3.5" fill="#FF7A00" />
-                    <circle cx="210" cy="90" r="3.5" fill="#FF7A00" />
-                    <circle cx="300" cy="90" r="3.5" fill="#FF7A00" />
-                    <circle cx="370" cy="90" r="3" fill="#FF7A00" />
-                  </g>
-                )}
-              </svg>
+                      <circle cx="120" cy="70" r="3.5" fill="#FF7A00" />
+                      <circle cx="210" cy="70" r="3.5" fill="#FF7A00" />
+                      <circle cx="300" cy="70" r="3.5" fill="#FF7A00" />
+                      <circle cx="370" cy="70" r="3" fill="#FF7A00" />
+                    </g>
+                  )}
+                </svg>
+              </div>
 
               {/* Bottom Fabric Datum */}
-              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between text-[9px] font-mono text-slate-600 px-2 pointer-events-none">
+              <div className="flex items-center justify-between pt-2 border-t border-white/5 text-[9px] font-mono text-slate-600 uppercase">
                 <span>{activePillar.posture} POSTURE</span>
                 <span>UPT PLUS FABRIC</span>
               </div>
             </div>
 
-            {/* Active Pillar Detailed Capabilities & Strategic Value (Open Editorial Layout) */}
+            {/* Active Pillar Detailed Capabilities & Outcomes */}
             <div className="pt-6 border-t border-white/5">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-base sm:text-lg font-bold text-white">

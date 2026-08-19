@@ -21,7 +21,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-24 pb-16 sm:pt-36 sm:pb-28 bg-[#080D1A] overflow-hidden text-slate-100 border-b border-white/5">
-      {/* Structural Construction Grid (Restrained & Quiet) */}
+      {/* Structural Construction Grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
@@ -42,8 +42,8 @@ export default function HeroSection() {
               className="mb-4 sm:mb-5"
             />
 
-            {/* Signature Macro Triad */}
-            <div className="font-['Space_Grotesk',sans-serif] font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white uppercase mb-3 sm:mb-4">
+            {/* Signature Macro Triad (H1) */}
+            <h1 className="font-['Space_Grotesk',sans-serif] font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white uppercase mb-3 sm:mb-4">
               {language === 'ar' ? (
                 <>
                   <span className="block text-white">تأمين.</span>
@@ -57,17 +57,14 @@ export default function HeroSection() {
                   <span className="block text-[#FF7A00]">PERFORM.</span>
                 </>
               )}
-            </div>
-
-            {/* Core Mission Title & Subtitle */}
-            <h1 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight leading-snug">
-              {t.hero.title}
             </h1>
 
-            <p className="mt-2 text-xs sm:text-sm font-mono text-purple-300 tracking-wide uppercase">
+            {/* Core Mission Subtitle */}
+            <p className="text-xs sm:text-sm font-mono text-purple-300 tracking-wide uppercase">
               {t.hero.subtitle}
             </p>
 
+            {/* Supporting Description */}
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed max-w-lg">
               {t.hero.description}
             </p>
@@ -89,7 +86,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Sub-Hero Architecture Datum Strip (Open Editorial Rules, NO HEAVY BOXES) */}
+        {/* Sub-Hero Architecture Datum Strip */}
         <div className="mt-12 sm:mt-16 pt-6 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6">
           {corePillars.map((pillar) => (
             <Link
