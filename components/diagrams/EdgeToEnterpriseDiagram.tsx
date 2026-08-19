@@ -13,8 +13,8 @@ export default function EdgeToEnterpriseDiagram() {
       num: '01',
       name: 'Edge',
       nameAr: 'الحافة',
-      subtitle: 'Global Anycast DNS & routing optimization',
-      subtitleAr: 'نظام DNS الموزع عالمياً وتحسين التوجيه',
+      subtitle: 'Edge traffic ingress & perimeter routing',
+      subtitleAr: 'استقبال التدفقات والتوجيه الطرفي',
       role: 'Absorbs traffic anomalies at the edge before requests reach core infrastructure.',
       roleAr: 'استيعاب أي قفزات مفاجئة أو هجمات عند الحافة الطرفية قبل وصولها للأنظمة الأساسية.',
     },
@@ -47,8 +47,8 @@ export default function EdgeToEnterpriseDiagram() {
       isDistributed: true,
       subtitle: 'Multi-node compute & distributed workloads',
       subtitleAr: 'منصات حوسبة وتوزيع أحمال العمل',
-      role: 'Provides resilient high-availability computing with sub-second failover.',
-      roleAr: 'توفر حوسبة عالية التوافر مع تحويل تلقائي فوري للمسارات عند أي طارئ.',
+      role: 'Supports resilient high-availability computing across distributed workloads.',
+      roleAr: 'دعم الحوسبة عالية التوافر والمصممة لتحمل أقصى متطلبات التشغيل عبر أحمال العمل الموزعة.',
     },
     {
       id: 'data',
@@ -69,8 +69,8 @@ export default function EdgeToEnterpriseDiagram() {
       isBackbone: true,
       subtitle: 'Physical transmission & system backbone',
       subtitleAr: 'العمود الفقري ومسارات النقل الفيزيائي',
-      role: 'Guarantees the unbroken physical foundation powering every software layer.',
-      roleAr: 'تضمن الأساس الفيزيائي الصلب والمستقر لتشغيل كافة الطبقات البرمجية.',
+      role: 'Provides the physical foundation supporting enterprise software environments.',
+      roleAr: 'توفير الأساس الفيزيائي المتين لدعم بيئات البرمجيات المؤسسية.',
     },
   ];
 

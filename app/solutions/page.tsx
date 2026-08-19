@@ -62,12 +62,12 @@ export default function SolutionsOverviewPage() {
         },
       ],
       outcomes: [
-        'Elimination of single-point-of-failure vulnerabilities across critical workloads',
+        'Reduction of single points of failure across critical workloads',
         'Protection of corporate data assets and sensitive transactions',
         'Minimized risk of unplanned operational disruptions from cyber incidents',
       ],
       outcomesAr: [
-        'القضاء على نقاط الضعف الفردية عبر أحمال العمل الحيوية',
+        'تقليص نقاط الضعف الفردية عبر أحمال العمل الحيوية',
         'حماية أصول البيانات المؤسسية والمعاملات الحساسة',
         'تقليص مخاطر التوقف غير المخطط الناتج عن الحوادث السيبرانية',
       ],

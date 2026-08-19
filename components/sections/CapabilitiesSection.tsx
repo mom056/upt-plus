@@ -46,12 +46,12 @@ export default function CapabilitiesSection() {
         },
       ],
       outcomes: [
-        'Elimination of single-point-of-failure vulnerabilities across critical workloads',
+        'Reduction of single points of failure across critical workloads',
         'Protection of corporate data assets and application transactions',
         'Minimized risk of unplanned operational disruptions from cyber incidents',
       ],
       outcomesAr: [
-        'القضاء على نقاط الضعف الفردية عبر أحمال العمل الحيوية',
+        'تقليص نقاط الضعف الفردية عبر أحمال العمل الحيوية',
         'حماية أصول البيانات المؤسسية والمعاملات التطبيقية الحساسة',
         'تقليص مخاطر التوقف غير المخطط الناتج عن الحوادث السيبرانية',
       ],
@@ -127,8 +127,8 @@ export default function CapabilitiesSection() {
         {
           name: 'Datacenter Interconnect & Cabling',
           nameAr: 'ربط مراكز البيانات والتمديدات',
-          desc: 'Organized, certified optical fiber installations and physical pathways engineered for high-throughput connectivity.',
-          descAr: 'تمديدات منظمة ومعتمدة للألياف الضوئية والكوابل الهيكلية المصممة لدعم سرعات النقل العالية.',
+          desc: 'Structured optical fiber backbones and engineered connectivity pathways designed for high-throughput operations.',
+          descAr: 'تمديدات منظمة للألياف الضوئية ومسارات اتصال مهندسة لدعم سرعات النقل والعمليات العالية.',
         },
         {
           name: 'Infrastructure Health & Telemetry',
