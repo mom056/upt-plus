@@ -19,46 +19,53 @@ export default function HeroTopologyCanvas() {
   return (
     <div className="relative w-full aspect-[16/11] sm:aspect-[16/10]">
       {/* Architectural Construction & Signal Vector */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {/* Horizontal & Vertical Engineering Datum Rails */}
-        <line x1="0%" y1="45%" x2="100%" y2="45%" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="6 6" />
-        <line x1="36%" y1="0%" x2="36%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        <line x1="60%" y1="0%" x2="60%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        <line x1="82%" y1="0%" x2="82%" y2="100%" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+        <line x1="0" y1="45" x2="100" y2="45" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
+        <line x1="36" y1="0" x2="36" y2="100" stroke="rgba(255,255,255,0.04)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="60" y1="0" x2="60" y2="100" stroke="rgba(255,255,255,0.04)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="82" y1="0" x2="82" y2="100" stroke="rgba(255,255,255,0.04)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
 
         {/* Passive Architectural Interconnects */}
-        <line x1="8%" y1="45%" x2="36%" y2="22%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="8%" y1="45%" x2="36%" y2="72%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="36%" y1="22%" x2="60%" y2="45%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="36%" y1="72%" x2="60%" y2="45%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="60%" y1="45%" x2="82%" y2="22%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="60%" y1="45%" x2="82%" y2="72%" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <line x1="8" y1="45" x2="36" y2="22" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="8" y1="45" x2="36" y2="72" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="36" y1="22" x2="60" y2="45" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="36" y1="72" x2="60" y2="45" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="60" y1="45" x2="82" y2="22" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        <line x1="60" y1="45" x2="82" y2="72" stroke="rgba(255,255,255,0.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
 
         {/* Security Protected Boundary (Subtle V-Shield Convergence Geometry) */}
         <polygon
-          points="130,12 210,12 170,88"
+          points="28,8 44,8 36,36"
           fill="rgba(107,33,168,0.08)"
           stroke="#9333EA"
           strokeWidth="1.5"
           strokeDasharray="4 3"
+          vectorEffect="non-scaling-stroke"
           className="hidden sm:block"
         />
 
         {/* THE UPT SIGNAL (Continuous Origin -> Routing -> Exit Datum) */}
         <path
-          d="M 8% 45% L 36% 22% L 60% 45% L 82% 72% L 82% 100%"
+          d="M 8 45 L 36 22 L 60 45 L 82 72 L 82 100"
           fill="none"
           stroke="#FF7A00"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
 
         {/* Active Route Pulse Anchor */}
-        <circle cx="60%" cy="45%" r="3.5" fill="#FF7A00" />
+        <circle cx="60" cy="45" r="1.5" fill="#FF7A00" vectorEffect="non-scaling-stroke" />
         
         {/* Downward Signal Exit Cue at Datum (82%) */}
-        <circle cx="82%" cy="100%" r="3" fill="#FF7A00" />
+        <circle cx="82" cy="100" r="1.5" fill="#FF7A00" vectorEffect="non-scaling-stroke" />
       </svg>
 
       {/* Open Architectural Node Labels (NO CARD BOXES) */}

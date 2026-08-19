@@ -176,13 +176,20 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
+  const [language, setLanguageState] = useState<Language>('en');
+
+  // Sync with saved preference on client mount to prevent SSR hydration mismatch
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('upt_lang') as Language | null;
-      if (saved === 'en' || saved === 'ar') return saved;
+      if (saved === 'en' || saved === 'ar') {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setLanguageState(saved);
+        document.documentElement.lang = saved;
+        document.documentElement.dir = saved === 'ar' ? 'rtl' : 'ltr';
+      }
     }
-    return 'en';
-  });
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
