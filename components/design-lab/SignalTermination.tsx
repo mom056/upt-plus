@@ -19,27 +19,27 @@ export default function SignalTermination() {
         </div>
 
         <div className="text-[11px] font-mono uppercase tracking-widest text-orange-400 font-bold mb-3">
-          {language === 'ar' ? 'استقرار المنظومة واكتمال المسار' : 'SYSTEM RESOLUTION & TERMINATION'}
+          {language === 'ar' ? 'اكتمال المسار المعماري' : 'UPT / RESOLUTION'}
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-['Space_Grotesk',sans-serif] tracking-tight uppercase leading-[1.1]">
-          {language === 'ar' ? 'تصميم معماري متين يقود المستقبل.' : "Engineered for what's next."}
+          {language === 'ar' ? 'بنية تحتية تقنية مهيأة لمتطلبات المستقبل.' : 'Technology infrastructure built for what’s next.'}
         </h2>
 
         <p className="mt-4 text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed">
           {language === 'ar'
-            ? 'نجمع بين النزاهة الهندسية والانضباط المعماري لتمكين المؤسسات من العمل والنمو بأمان مطلق.'
-            : 'Uncompromising engineering discipline and architectural rigor delivering dependable cybersecurity, scalable cloud computing, and resilient infrastructure.'}
+            ? 'تساعد UPT Plus المؤسسات على بناء وتأمين وتحديث وتشغيل البيئات الرقمية التي تقود الأعمال الحديثة.'
+            : 'UPT Plus helps organizations build, secure, modernize, and operate the digital environments behind modern business.'}
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-4">
           <Button href="/contact" variant="primary" size="md" withArrow>
-            {language === 'ar' ? 'استشر مهندسينا المعماريين' : 'Consult Our Solutions Architects'}
+            {language === 'ar' ? 'تحدث مع خبير' : 'Talk to an Expert'}
           </Button>
         </div>
 
         <div className="mt-12 text-[10px] font-mono text-slate-600 uppercase tracking-widest">
-          UPT PLUS // CYBERSECURITY &amp; CLOUD COMPUTING // ARCHITECTURAL CONTROL PLANE
+          UPT PLUS // CYBERSECURITY &amp; CLOUD COMPUTING
         </div>
       </div>
     </section>

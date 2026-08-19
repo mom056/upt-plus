@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/lib/i18n';
 import SectionMarker from '@/components/ui/SectionMarker';
-import { ShieldCheck, Cloud, Server, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Cloud, Server } from 'lucide-react';
 
 export default function ArchitectureFingerprints() {
   const { language } = useLanguage();
@@ -16,23 +16,23 @@ export default function ArchitectureFingerprints() {
       title: 'Cybersecurity',
       titleAr: 'الأمن السيبراني',
       concept: 'BOUNDARY',
-      conceptAr: 'سياج الحماية والتحقق',
-      headline: 'Cryptographic boundary verification and least-privilege containment.',
-      headlineAr: 'التحقق التشفيري عند السياج وعزل التهديدات بمبدأ الحد الأدنى من الصلاحيات.',
+      conceptAr: 'سياج الحماية',
+      headline: 'Boundary defense, verification, and least-privilege containment.',
+      headlineAr: 'الدفاع عن السياج والتحقق وعزل التهديدات بمبدأ الحد الأدنى من الصلاحيات.',
       description:
-        'The UPT Signal arrives from external ingress and encounters a hardened Purple Security Boundary. Identity tokens, cryptographic signatures, and payload schemas undergo deep inspection before permission to cross into internal application clusters is granted.',
+        'The UPT Signal arrives from external ingress and encounters a protected Security Boundary. Verification occurs at the perimeter before routing into internal application environments.',
       descriptionAr:
-        'تصل إشارة UPT من منافذ الدخول الخارجية وتلتقي بسياج الأمان المحصن. يتم فحص توثيق الهويات والتواقيع التشفيرية وسلامة البيانات بعمق قبل السماح لها بالعبور إلى عناقيد التطبيقات الداخلية.',
+        'تصل إشارة UPT من منافذ الدخول الخارجية وتلتقي بسياج الأمان. يتم التحقق عند المحيط قبل التوجيه إلى بيئات التطبيقات الداخلية.',
       icon: ShieldCheck,
       mechanisms: [
-        'Context-aware identity inspection (Zero Trust)',
-        'Perimeter microsegmentation & lateral movement containment',
-        'Cryptographic secrets & HSM key isolation',
+        'Context-aware identity verification',
+        'Perimeter isolation and boundary defense',
+        'Cryptographic secrets and key management',
       ],
       mechanismsAr: [
-        'فحص الهويات المعتمد على السياق (Zero Trust)',
-        'العزل الشبكي الدقيق واحتواء التحركات الجانبية',
-        'عزل المفاتيح التشفيرية والأسرار البرمجية عتادياً',
+        'التحقق من الهويات المعتمد على السياق',
+        'العزل المحيطي والدفاع عن السياج',
+        'إدارة المفاتيح التشفيرية والأسرار',
       ],
     },
     {
@@ -41,23 +41,23 @@ export default function ArchitectureFingerprints() {
       title: 'Cloud Computing',
       titleAr: 'الحوسبة السحابية',
       concept: 'DISTRIBUTION',
-      conceptAr: 'التوزيع والتوافر العالي',
-      headline: 'Balanced multi-zone orchestration and resilient autoscaling topologies.',
-      headlineAr: 'توزيع متوازن عبر مناطق متعددة وبنية حوسبية مرنة وقابلة للتوسع التلقائي.',
+      conceptAr: 'التوزيع السحابي',
+      headline: 'Balanced orchestration and resilient scalable topologies.',
+      headlineAr: 'توزيع متوازن وبنية حوسبية مرنة وقابلة للتوسع.',
       description:
-        'A single incoming Orange Signal enters the cloud orchestration layer and splits gracefully into three synchronized, resilient compute zones. Workload state replicates in real time, guaranteeing zero disruption if a single zone experiences degradation.',
+        'A single incoming signal enters the cloud layer and distributes into balanced, resilient compute nodes. Workloads remain synchronized to maintain continuous availability.',
       descriptionAr:
-        'تدخل إشارة UPT البرتقالية إلى طبقة التنسيق السحابي وتتفرع بسلاسة إلى ثلاث مناطق حوسبية متزامنة وعالية الصمود. تتم مزامنة أحمال العمل لحظياً لضمان استمرارية الأعمال التامة.',
+        'تدخل إشارة UPT إلى الطبقة السحابية وتتفرع إلى عُقد حوسبية متوازنة وعالية الصمود للحفاظ على استمرارية العمليات.',
       icon: Cloud,
       mechanisms: [
-        'Multi-availability zone active-active replication',
-        'Decoupled microservices & dynamic container fabrics',
-        'Predictable operational spending & automated scaling',
+        'Distributed active workload synchronization',
+        'Modular cloud platform architecture',
+        'Predictable operational capacity',
       ],
       mechanismsAr: [
-        'مزامنة نشطة متزامنة عبر مناطق متعددة التوافر',
-        'خدمات مصغرة مستقلة ونسيج حاويات مرن',
-        'نفقات تشغيلية مدروسة وتوسع تلقائي ذكي',
+        'مزامنة أحمال العمل الموزعة والنشطة',
+        'معمارية منصات سحابية معيارية',
+        'سعة تشغيلية مدروسة وموثوقة',
       ],
     },
     {
@@ -66,23 +66,23 @@ export default function ArchitectureFingerprints() {
       title: 'Digital Infrastructure',
       titleAr: 'البنية التحتية الرقمية',
       concept: 'BACKBONE',
-      conceptAr: 'العمود الفقري والربط الفيزيائي',
-      headline: 'High-throughput optical backbones and engineered switching fabrics.',
-      headlineAr: 'عمود فقري ضوئي عالي السعة ومحولات بيانات مؤسسية فائقة السرعة.',
+      conceptAr: 'العمود الفقري',
+      headline: 'High-capacity physical backbones and engineered interconnect fabrics.',
+      headlineAr: 'عمود فقري فيزيائي عالي السعة ومسارات ربط هندسية موثوقة.',
       description:
-        'The distributed signal resolves into an unbroken, structured physical backbone. Redundant single-mode optical fiber conduits, non-blocking spine-leaf switching, and real-time environmental telemetry guarantee the physical reliability of every digital layer.',
+        'The signal resolves into a structured physical backbone. Dedicated transmission conduits and switching pathways secure the operational foundation of every digital service.',
       descriptionAr:
-        'تستقر الإشارة الموزعة في عمود فقري فيزيائي متين. تضمن مسارات الألياف الضوئية المزدوجة ومحولات Spine-Leaf والمراقبة اللحظية للخطوط سلامة الأساس الفيزيائي لكافة الطبقات الرقمية.',
+        'تستقر الإشارة في عمود فقري فيزيائي منظم. تضمن مسارات النقل والربط المخصصة سلامة الأساس التشغيلي لكافة الخدمات الرقمية.',
       icon: Server,
       mechanisms: [
-        'Dual-conduit single-mode optical fiber backbones',
-        'Non-blocking carrier switching & EVPN-VXLAN overlays',
-        'Continuous link health & proactive packet loss auditing',
+        'Structured transmission backbone pathways',
+        'Carrier-grade enterprise switching fabrics',
+        'Continuous physical link health monitoring',
       ],
       mechanismsAr: [
-        'مسارات ألياف ضوئية مزدوجة ومعتمدة',
-        'محولات شبكية متقدمة مع شبكات تراكبية مشفرة',
-        'مراقبة مستمرة لصحة الخطوط واكتشاف فقدان الحزم مبكراً',
+        'مسارات عمود فقري منظمة وعالية الموثوقية',
+        'محولات شبكية متقدمة للمؤسسات',
+        'مراقبة مستمرة لصحة مسارات الربط الفيزيائي',
       ],
     },
   ];
@@ -183,48 +183,67 @@ export default function ArchitectureFingerprints() {
                 }}
               />
 
+              {/* 01. Cybersecurity (BOUNDARY) SVG */}
               {activeFingerprint === 0 && (
                 <svg className="w-full h-full" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line x1="20" y1="80" x2="380" y2="80" stroke="rgba(255,255,255,0.08)" strokeDasharray="4 4" />
-                  <rect x="180" y="20" width="160" height="120" rx="6" fill="rgba(107,33,168,0.15)" stroke="#9333EA" strokeWidth="2" strokeDasharray="6 3" />
+                  
+                  {/* Purple Security Perimeter Boundary */}
+                  <rect x="180" y="25" width="170" height="110" rx="4" fill="rgba(107,33,168,0.12)" stroke="#9333EA" strokeWidth="1.5" strokeDasharray="6 3" />
+                  
+                  {/* Boundary Checkpoint Gate */}
                   <rect x="174" y="65" width="12" height="30" rx="2" fill="#9333EA" stroke="#C084FC" strokeWidth="1" />
-                  <text x="260" y="130" fill="#C084FC" fontSize="10" fontFamily="monospace" textAnchor="middle">ZERO TRUST PERIMETER</text>
-                  <path d="M 30 80 L 174 80" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="174" cy="80" r="4" fill="#FF7A00" />
-                  <path d="M 186 80 L 320 80" stroke="#FF7A00" strokeWidth="2.5" strokeDasharray="4 2" />
-                  <circle cx="280" cy="80" r="3" fill="#A855F7" />
-                  <circle cx="320" cy="80" r="4" fill="#10B981" />
+
+                  {/* Incoming UPT Signal Crossing Boundary */}
+                  <path d="M 30 80 L 174 80" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="174" cy="80" r="3.5" fill="#FF7A00" />
+                  
+                  {/* Protected Internal Route */}
+                  <path d="M 186 80 L 330 80" stroke="#FF7A00" strokeWidth="2" strokeDasharray="4 3" />
+                  <circle cx="330" cy="80" r="3.5" fill="#FF7A00" />
                 </svg>
               )}
 
+              {/* 02. Cloud Computing (DISTRIBUTION) SVG */}
               {activeFingerprint === 1 && (
                 <svg className="w-full h-full" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="120" y="60" width="40" height="40" rx="4" fill="#151D32" stroke="#FF7A00" strokeWidth="1.5" />
-                  <text x="140" y="84" fill="#FF7A00" fontSize="9" fontFamily="monospace" textAnchor="middle">HUB</text>
-                  <path d="M 20 80 L 120 80" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
-                  <path d="M 160 80 L 220 40 L 320 40" stroke="#FF7A00" strokeWidth="2" />
-                  <path d="M 160 80 L 220 80 L 320 80" stroke="#FF7A00" strokeWidth="2" />
-                  <path d="M 160 80 L 220 120 L 320 120" stroke="#FF7A00" strokeWidth="2" />
-                  <circle cx="320" cy="40" r="6" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
-                  <circle cx="320" cy="80" r="6" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
-                  <circle cx="320" cy="120" r="6" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
-                  <text x="335" y="44" fill="#CBD5E1" fontSize="9" fontFamily="monospace">ZONE-A</text>
-                  <text x="335" y="84" fill="#CBD5E1" fontSize="9" fontFamily="monospace">ZONE-B</text>
-                  <text x="335" y="124" fill="#CBD5E1" fontSize="9" fontFamily="monospace">ZONE-C</text>
+                  <line x1="20" y1="80" x2="380" y2="80" stroke="rgba(255,255,255,0.08)" strokeDasharray="4 4" />
+                  
+                  {/* Central Node */}
+                  <rect x="120" y="62" width="36" height="36" rx="3" fill="#151D32" stroke="#FF7A00" strokeWidth="1.5" />
+
+                  {/* Incoming Single Signal */}
+                  <path d="M 30 80 L 120 80" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                  
+                  {/* 3-Way Distributed Branches */}
+                  <path d="M 156 80 L 220 38 L 330 38" stroke="#FF7A00" strokeWidth="2" />
+                  <path d="M 156 80 L 220 80 L 330 80" stroke="#FF7A00" strokeWidth="2" />
+                  <path d="M 156 80 L 220 122 L 330 122" stroke="#FF7A00" strokeWidth="2" />
+
+                  {/* Distributed Endpoint Nodes */}
+                  <circle cx="330" cy="38" r="5" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
+                  <circle cx="330" cy="80" r="5" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
+                  <circle cx="330" cy="122" r="5" fill="#151D32" stroke="#FF7A00" strokeWidth="2" />
                 </svg>
               )}
 
+              {/* 03. Digital Infrastructure (BACKBONE) SVG */}
               {activeFingerprint === 2 && (
                 <svg className="w-full h-full" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="30" y1="80" x2="370" y2="80" stroke="#FF7A00" strokeWidth="4" strokeLinecap="round" />
-                  <line x1="30" y1="88" x2="370" y2="88" stroke="#9333EA" strokeWidth="1.5" strokeDasharray="3 3" />
-                  <rect x="80" y="45" width="24" height="70" rx="2" fill="#0D1326" stroke="#94A3B8" strokeWidth="1.5" />
-                  <rect x="180" y="45" width="24" height="70" rx="2" fill="#0D1326" stroke="#94A3B8" strokeWidth="1.5" />
-                  <rect x="280" y="45" width="24" height="70" rx="2" fill="#0D1326" stroke="#94A3B8" strokeWidth="1.5" />
-                  <text x="92" y="35" fill="#94A3B8" fontSize="8" fontFamily="monospace" textAnchor="middle">NODE-1</text>
-                  <text x="192" y="35" fill="#94A3B8" fontSize="8" fontFamily="monospace" textAnchor="middle">NODE-2</text>
-                  <text x="292" y="35" fill="#94A3B8" fontSize="8" fontFamily="monospace" textAnchor="middle">NODE-3</text>
-                  <text x="200" y="145" fill="#64748B" fontSize="9" fontFamily="monospace" textAnchor="middle">OPTICAL FIBER BACKBONE &amp; STRUCTURED CABLING</text>
+                  <line x1="20" y1="80" x2="380" y2="80" stroke="rgba(255,255,255,0.08)" strokeDasharray="4 4" />
+                  
+                  {/* Backbone Trunk Line */}
+                  <line x1="30" y1="80" x2="370" y2="80" stroke="#FF7A00" strokeWidth="3" strokeLinecap="round" />
+
+                  {/* Structured Interconnect Nodes */}
+                  <rect x="90" y="48" width="20" height="64" rx="2" fill="#0D1326" stroke="#64748B" strokeWidth="1.5" />
+                  <rect x="190" y="48" width="20" height="64" rx="2" fill="#0D1326" stroke="#64748B" strokeWidth="1.5" />
+                  <rect x="290" y="48" width="20" height="64" rx="2" fill="#0D1326" stroke="#64748B" strokeWidth="1.5" />
+
+                  {/* Node Tap Points */}
+                  <circle cx="100" cy="80" r="3" fill="#FF7A00" />
+                  <circle cx="200" cy="80" r="3" fill="#FF7A00" />
+                  <circle cx="300" cy="80" r="3" fill="#FF7A00" />
                 </svg>
               )}
             </div>
@@ -236,7 +255,7 @@ export default function ArchitectureFingerprints() {
               <div className="space-y-2 pt-3 border-t border-white/10">
                 {(language === 'ar' ? current.mechanismsAr : current.mechanisms).map((mech, mIdx) => (
                   <div key={mIdx} className="flex items-center gap-2 text-xs text-slate-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0" />
                     <span>{mech}</span>
                   </div>
                 ))}

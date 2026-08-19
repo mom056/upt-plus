@@ -28,10 +28,7 @@ export default function SignatureHero() {
       />
 
       <div className="absolute top-8 left-8 text-[9px] font-mono text-slate-600 select-none hidden lg:block">
-        + UPT / FIELD-01 // COORD: [32.88°N, 13.19°E]
-      </div>
-      <div className="absolute top-8 right-8 text-[9px] font-mono text-slate-600 select-none hidden lg:block">
-        SEC-PERIMETER: ACTIVE // CLOUD-FABRIC // +
+        UPT / FIELD-01
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -89,15 +86,14 @@ export default function SignatureHero() {
           <div className="lg:col-span-7 w-full relative">
             <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10 text-[10px] sm:text-[11px] font-mono text-slate-400">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span className="uppercase text-slate-200 font-bold">
-                  {language === 'ar' ? 'طوبولوجيا المعمارية المؤسسية' : 'ENTERPRISE TOPOLOGY FIELD'}
+                  {language === 'ar' ? 'طوبولوجيا المعمارية المؤسسية' : 'ENTERPRISE TOPOLOGY'}
                 </span>
               </div>
               <div className="flex items-center gap-3 text-[10px]">
                 <span className="flex items-center gap-1.5 text-orange-400">
                   <span className="w-2 h-0.5 bg-[#FF7A00]" />
-                  {language === 'ar' ? 'مسار الإشارة UPT' : 'UPT Signal'}
+                  {language === 'ar' ? 'مسار الإشارة' : 'UPT Signal'}
                 </span>
                 <span className="flex items-center gap-1.5 text-purple-400">
                   <span className="w-1.5 h-1.5 rounded-full border border-purple-400 bg-purple-900/40" />
@@ -191,14 +187,14 @@ export default function SignatureHero() {
                 })}
               </div>
 
-              <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-slate-400 border-t border-white/10 pt-1.5">
-                <span className="truncate">
+              <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/10 pt-1.5">
+                <span className="truncate uppercase">
                   {activeNode
                     ? (language === 'ar' ? 'الطبقة المحددة: ' : 'LAYER: ') + (nodes.find((n) => n.id === activeNode)?.name.toUpperCase() || '')
-                    : 'CONTROL PLANE // STEADY STATE'}
+                    : 'UPT CONTROL PLANE'}
                 </span>
-                <span className="text-orange-400 shrink-0">
-                  {language === 'ar' ? 'إشارة نشطة: مُحققة' : 'SIGNAL: ACTIVE'}
+                <span className="text-orange-400 font-mono">
+                  {language === 'ar' ? 'مسار الإشارة' : 'ACTIVE ROUTE'}
                 </span>
               </div>
             </div>

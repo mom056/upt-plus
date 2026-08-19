@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/lib/i18n';
 import SectionMarker from '@/components/ui/SectionMarker';
-import { Globe2, ShieldCheck, Code2, Cloud, Database, Server, CheckCircle2 } from 'lucide-react';
+import { Globe2, ShieldCheck, Code2, Cloud, Database, Server } from 'lucide-react';
 
 export default function SignatureEdgeSequence() {
   const { language } = useLanguage();
@@ -13,69 +13,69 @@ export default function SignatureEdgeSequence() {
     {
       id: 'edge',
       num: '01',
-      name: 'Edge & Ingress',
-      nameAr: 'الحافة وبوابات الدخول',
-      role: 'Global Anycast DNS, DDoS mitigation & TLS termination.',
-      roleAr: 'نظام Anycast الموزع عالمياً، تنقية هجمات DDoS، وإنهاء التشفير.',
+      name: 'Edge',
+      nameAr: 'الحافة',
+      role: 'Traffic ingress, edge routing, and perimeter distribution.',
+      roleAr: 'استقبال التدفقات، والتوجيه على الحافة، والتوزيع المحيطي.',
       icon: Globe2,
-      protocols: ['BGP Anycast Routing', 'Volumetric Scrubbing', 'Edge Caching'],
-      protocolsAr: ['توجيه Anycast المسرع', 'تنقية التدفقات الضخمة', 'التخزين المؤقت على الحافة'],
+      protocols: ['Anycast Network Routing', 'Edge Distribution', 'Ingress Filtering'],
+      protocolsAr: ['توجيه شبكات Anycast', 'التوزيع على الحافة', 'تنقية التدفقات عند الدخول'],
     },
     {
       id: 'security',
       num: '02',
-      name: 'Security Boundary',
-      nameAr: 'سياج الأمان وانعدام الثقة',
-      role: 'Zero Trust validation, WAF inspection & API shields.',
-      roleAr: 'تحقق Zero Trust المستمر، جدران WAF، وحماية واجهات البرمجة.',
+      name: 'Security',
+      nameAr: 'الأمان السيبراني',
+      role: 'Zero Trust boundary verification and access enforcement.',
+      roleAr: 'التحقق عند سياج انعدام الثقة وتطبيق سياسات الوصول.',
       icon: ShieldCheck,
       isBoundary: true,
-      protocols: ['Contextual MFA Validation', 'WAF Payload Inspection', 'API Schema Guard'],
-      protocolsAr: ['التحقق السياقي متعدد العوامل', 'فحص حمولات البيانات WAF', 'حماية مخططات APIs'],
+      protocols: ['Identity & Access Validation', 'Perimeter Boundary Inspection', 'API Security Guard'],
+      protocolsAr: ['التحقق من الهويات والوصول', 'فحص محيط السياج الأمني', 'حماية واجهات البرمجة'],
     },
     {
       id: 'apps',
       num: '03',
       name: 'Applications & APIs',
-      nameAr: 'التطبيقات وواجهات البرمجة',
-      role: 'Decoupled microservices, container routing & event streams.',
-      roleAr: 'خدمات مصغرة مستقلة، توجيه الحاويات، وتدفق الأحداث اللحظية.',
+      nameAr: 'التطبيقات و APIs',
+      role: 'Decoupled services, container routing, and event meshes.',
+      roleAr: 'خدمات معمارية مستقلة، توجيه الحاويات، وربط التطبيقات.',
       icon: Code2,
-      protocols: ['Kubernetes Ingress Mesh', 'Async Event Queues', 'Service Decoupling'],
-      protocolsAr: ['توجيه شبكات Kubernetes', 'قوائم الأحداث اللحظية', 'استقلالية الخدمات'],
+      protocols: ['Service Mesh Routing', 'Asynchronous Queues', 'Decoupled Architecture'],
+      protocolsAr: ['توجيه نسيج الخدمات', 'قوائم الأحداث اللحظية', 'الاستقلالية المعمارية'],
     },
     {
       id: 'cloud',
       num: '04',
       name: 'Cloud Computing',
       nameAr: 'الحوسبة السحابية',
-      role: 'Multi-zone hybrid fabric with sub-second failover.',
-      roleAr: 'نسيج سحابي هجين متعدد المناطق مع تحويل فوري عند الأعطال.',
+      role: 'Multi-zone compute platforms and scalable cloud foundations.',
+      roleAr: 'منصات حوسبة متعددة المناطق وأسس سحابية قابلة للتوسع.',
       icon: Cloud,
-      protocols: ['Multi-AZ Active Replication', 'VPC Transit Mesh', 'Infrastructure as Code'],
-      protocolsAr: ['مزامنة حوسبية متعددة المناطق', 'بوابات العبور المشفرة', 'البنية التحتية المؤتمتة كرمز'],
+      protocols: ['Multi-Zone Architecture', 'Automated Cloud Platforms', 'Hybrid Connectivity'],
+      protocolsAr: ['معمارية متعددة المناطق', 'منصات سحابية مؤتمتة', 'الربط السحابي الهجين'],
     },
     {
       id: 'data',
       num: '05',
-      name: 'Data & Secrets',
-      nameAr: 'البيانات والأسرار المشفرة',
-      role: 'Hardware cryptographic modules & transactional DB replication.',
-      roleAr: 'وحدات تشفير عتادية HSM ومزامنة قواعد البيانات الحيوية.',
+      name: 'Data',
+      nameAr: 'البيانات',
+      role: 'Encrypted storage, key management, and data synchronization.',
+      roleAr: 'التخزين المشفر، وإدارة المفاتيح، ومزامنة قواعد البيانات.',
       icon: Database,
-      protocols: ['Field-Level Encryption', 'HSM Key Management', 'Immutable Audit Log'],
-      protocolsAr: ['تشفير دقيق على مستوى الحقول', 'إدارة المفاتيح عتادياً', 'سجلات تدقيق غير قابلة للتعديل'],
+      protocols: ['Storage Encryption', 'Key Management Systems', 'Data Synchronization'],
+      protocolsAr: ['تشفير وسائط التخزين', 'إدارة المفاتيح والأسرار', 'مزامنة وتكامل البيانات'],
     },
     {
       id: 'infra',
       num: '06',
       name: 'Digital Infrastructure',
-      nameAr: 'البنية التحتية الرقمية',
-      role: 'High-density optical fiber backbones & redundant datacenter pathways.',
-      roleAr: 'كوابل الألياف الضوئية عالية الكثافة ومسارات مراكز البيانات المتكررة.',
+      nameAr: 'البنية التحتية',
+      role: 'Structured physical backbones and enterprise switching fabrics.',
+      roleAr: 'العمود الفقري الفيزيائي ومحولات الشبكات المؤسسية.',
       icon: Server,
-      protocols: ['Dual-Conduit Fiber Routes', 'Carrier Spine-Leaf Fabric', 'Continuous Telemetry'],
-      protocolsAr: ['مسارات ألياف مزدوجة ومحمية', 'محولات Spine-Leaf المتقدمة', 'مراقبة الخطوط على مدار الساعة'],
+      protocols: ['Structured Physical Backbones', 'Enterprise Switching Fabrics', 'Link Health Auditing'],
+      protocolsAr: ['العمود الفقري المنظم', 'محولات الشبكات المؤسسية', 'فحص موثوقية الخطوط'],
     },
   ];
 
@@ -187,12 +187,12 @@ export default function SignatureEdgeSequence() {
 
             <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-white/10 pt-4 lg:pt-0 lg:ps-6 rtl:lg:border-r rtl:lg:border-l-0 rtl:lg:pe-6">
               <div className="text-[11px] font-mono uppercase text-slate-400 tracking-wider mb-2.5 font-bold">
-                {language === 'ar' ? 'الضوابط والبروتوكولات:' : 'Core Protocols & Standards:'}
+                {language === 'ar' ? 'تفاصيل الطبقة:' : 'Layer Detail:'}
               </div>
               <ul className="space-y-2">
                 {(language === 'ar' ? current.protocolsAr : current.protocols).map((p, pIdx) => (
-                  <li key={pIdx} className="flex items-start gap-2 text-xs text-slate-200">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <li key={pIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0 mt-1.5" />
                     <span>{p}</span>
                   </li>
                 ))}
