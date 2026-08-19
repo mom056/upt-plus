@@ -66,7 +66,7 @@ export default function CapabilitiesSection() {
       tagline: 'Distributed Fabric & High Availability',
       taglineAr: 'بنية موزعة وجاهزية تشغيلية فائقة',
       headline: 'Architect high-performance, resilient cloud foundations.',
-      headlineAr: 'تصميم وبناء ركائز سحابية عالية الأداء ومصممة لتحمل أقصى متطلبات التشغيل.',
+      headlineAr: 'تصميم وبناء ركائز سحابية مرنة وعالية الأداء.',
       overview:
         'Resilient, decoupled, and cost-effective digital operating foundations — from foundational multi-zone cloud architecture and structured migration to hybrid connectivity and container orchestration.',
       overviewAr:
@@ -138,12 +138,12 @@ export default function CapabilitiesSection() {
         },
       ],
       outcomes: [
-        'Elimination of physical transmission bottlenecks across enterprise sites',
+        'Reduction of physical transmission bottlenecks across enterprise sites',
         'Standardized, well-documented cabling and switching topology for long-term maintainability',
         'Dependable physical backbone underpinning multi-cloud and security deployments',
       ],
       outcomesAr: [
-        'إزالة اختناقات النقل الفيزيائية والمنطقية عبر كافة مقرات المؤسسة',
+        'تقليص اختناقات النقل الفيزيائية والمنطقية عبر مقرات المؤسسة',
         'بنية شبكية وكوابل قياسية وموثقة بدقة مصممة للاستدامة وسهولة الصيانة',
         'عمود فقري فيزيائي متين يدعم استثمارات السحابة والأمن السيبراني',
       ],

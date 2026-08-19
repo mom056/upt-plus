@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import SectionMarker from '@/components/ui/SectionMarker';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/lib/i18n';
-import { CheckCircle2, ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 export default function SolutionsOverviewPage() {
   const { language, isRTL } = useLanguage();
@@ -79,7 +79,7 @@ export default function SolutionsOverviewPage() {
       tagline: 'Distributed Architecture, Hybrid Fabric & High Availability',
       taglineAr: 'بنية موزعة، نسيج هجين، وجاهزية تشغيلية فائقة',
       headline: 'Architect high-performance, resilient cloud foundations.',
-      headlineAr: 'تصميم وبناء ركائز سحابية عالية الأداء ومصممة لتحمل أقصى متطلبات التشغيل.',
+      headlineAr: 'تصميم وبناء ركائز سحابية مرنة وعالية الأداء.',
       overview:
         'Cloud adoption is not simply moving virtual machines; it is designing resilient, decoupled, and cost-effective operating foundations. UPT Plus provides foundational multi-zone cloud architecture, structured migration, hybrid connectivity, and container orchestration.',
       overviewAr:
@@ -173,12 +173,12 @@ export default function SolutionsOverviewPage() {
         },
       ],
       outcomes: [
-        'Elimination of physical and logical transmission bottlenecks across enterprise sites',
+        'Reduction of physical and logical transmission bottlenecks across enterprise sites',
         'Standardized, well-documented cabling and switching topology built for long-term maintainability',
         'Dependable physical backbone underpinning multi-cloud and security deployments',
       ],
       outcomesAr: [
-        'إزالة اختناقات النقل الفيزيائية والمنطقية عبر كافة مقرات المؤسسة',
+        'تقليص اختناقات النقل الفيزيائية والمنطقية عبر مقرات المؤسسة',
         'بنية شبكية وكوابل قياسية وموثقة بدقة مصممة للاستدامة وسهولة الصيانة',
         'عمود فقري فيزيائي متين يدعم استثمارات السحابة والأمن السيبراني',
       ],
@@ -395,7 +395,7 @@ export default function SolutionsOverviewPage() {
                     <ul className="space-y-2.5">
                       {(language === 'ar' ? sol.outcomesAr : sol.outcomes).map((val, vIdx) => (
                         <li key={vIdx} className="flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span className="w-1.5 h-1.5 rounded-[1px] bg-slate-500 shrink-0 mt-1.5" />
                           <span>{val}</span>
                         </li>
                       ))}
@@ -417,7 +417,7 @@ export default function SolutionsOverviewPage() {
                   {/* 4 Open Capability Specification Rows */}
                   <div className="space-y-6 pt-6 border-t border-white/10">
                     <div className="text-[10px] font-mono uppercase text-slate-500 tracking-wider">
-                      {language === 'ar' ? 'المواصفات والقدرات التقنية المعتمدة:' : 'ENGINEERING SPECIFICATIONS:'}
+                      {language === 'ar' ? 'المواصفات والقدرات التقنية:' : 'ENGINEERING SPECIFICATIONS:'}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

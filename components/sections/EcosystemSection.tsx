@@ -34,9 +34,9 @@ export default function EcosystemSection() {
       category: 'Core Optical & Enterprise Networking',
       categoryAr: 'الشبكات الضوئية الأساسية ومحولات البيانات',
       description:
-        'Interoperable with carrier routing protocols (BGP/EVPN-VXLAN), software-defined WAN fabrics, and certified structured cabling.',
+        'Interoperable with carrier routing protocols (BGP/EVPN-VXLAN), software-defined WAN fabrics, and structured cabling.',
       descriptionAr:
-        'توافق تشغيلي مع بروتوكولات توجيه المشغلين (BGP/EVPN-VXLAN)، شبكات SD-WAN، وتمديدات الكوابل الهيكلية المعتمدة.',
+        'توافق تشغيلي مع بروتوكولات توجيه المشغلين (BGP/EVPN-VXLAN)، شبكات SD-WAN، وتمديدات الكوابل الهيكلية.',
     },
     {
       num: '04',
@@ -65,7 +65,7 @@ export default function EcosystemSection() {
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0D1326] font-['Space_Grotesk',sans-serif] leading-[1.12]">
             {language === 'ar'
-              ? 'مصممة للتكامل مع أرقى بيئات التقنية المؤسسية.'
+              ? 'مصممة للتكامل مع بيئات التقنية المؤسسية الحديثة.'
               : 'Built to integrate across modern enterprise environments.'}
           </h2>
 

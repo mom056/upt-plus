@@ -5,7 +5,6 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import SectionMarker from '@/components/ui/SectionMarker';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/lib/i18n';
-import { CheckCircle2 } from 'lucide-react';
 
 export default function EcosystemPage() {
   const { language } = useLanguage();
@@ -105,7 +104,7 @@ export default function EcosystemPage() {
           />
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0D1326] font-['Space_Grotesk',sans-serif] leading-[1.08] uppercase">
             {language === 'ar'
-              ? 'مصممة للتكامل مع أرقى بيئات التقنية المؤسسية.'
+              ? 'مصممة للتكامل مع بيئات التقنية المؤسسية الحديثة.'
               : 'Built to integrate across modern enterprise environments.'}
           </h1>
           <p className="mt-5 text-base sm:text-xl text-slate-600 leading-relaxed max-w-3xl">
@@ -176,8 +175,8 @@ export default function EcosystemPage() {
                   {language === 'ar' ? 'نطاق التكامل الهندسي:' : 'Technical Scope:'}
                 </div>
                 {(language === 'ar' ? domain.capabilitiesAr : domain.capabilities).map((cap, cIdx) => (
-                  <div key={cIdx} className="flex items-start gap-2 text-xs text-slate-600">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div key={cIdx} className="flex items-start gap-2.5 text-xs text-slate-600">
+                    <span className="w-1.5 h-1.5 rounded-[1px] bg-slate-400 shrink-0 mt-1.5" />
                     <span>{cap}</span>
                   </div>
                 ))}
